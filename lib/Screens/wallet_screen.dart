@@ -27,7 +27,6 @@ class _WalletScreenState extends State<WalletScreen> {
       Navigator.push(context, MaterialPageRoute(builder: (context) => GetStarted()));
       break;
     case 2:
-      Navigator.push(context, MaterialPageRoute(builder: (context) => WalletScreen()));
       break;
     case 3:
       Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));

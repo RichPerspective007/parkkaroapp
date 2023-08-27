@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:parkeaseapp/Screens/qr_screen.dart';
 import 'Screens/get_started.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -24,8 +25,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.greenAccent, // background (button) color
+        foregroundColor: Colors.black, // foreground (text) color
       ),
-      home: const GetStarted(),
+    ),
+      ),
+      home: QRCodeScreen(),
     );
   }
 }

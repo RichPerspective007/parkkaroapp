@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:parkeaseapp/Screens/home_page_2.dart';
+import 'package:parkeaseapp/Screens/login_screen.dart';
 
 class GetStarted extends StatelessWidget {
   const GetStarted({super.key});
@@ -26,10 +27,11 @@ class GetStarted extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MyHomePage()),
+                    MaterialPageRoute(builder: (context) => const LoginScreen()),
                   );
 
                 },
+                
                 child: const Text("Get Started"),
               ),
             ),

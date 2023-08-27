@@ -3,6 +3,7 @@ import 'package:parkeaseapp/Constants/clickable_container.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
 import 'package:parkeaseapp/Screens/get_started.dart';
 import 'package:parkeaseapp/Screens/home_page_2.dart';
+import 'package:parkeaseapp/Screens/settings_screen.dart';
 import 'package:parkeaseapp/Screens/wallet_screen.dart';
 
 
@@ -31,7 +32,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       Navigator.push(context, MaterialPageRoute(builder: (context) => WalletScreen()));
       break;
     case 3:
-      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
       break;
     // Add cases for other pages
   }
@@ -173,7 +173,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       text: 'Settings',
                       customIconData: Icons.settings,
                       onTap: () {
-                        // Action for tapping container
+                        Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Settings()),
+                      );// Action for tapping container
                       },
                       customContainerColor: Colors.white24,    // Custom container color
                       customContainerHeight: scrHeight/(800/60),        // Custom container height

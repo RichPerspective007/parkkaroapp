@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:parkeaseapp/Screens/get_started.dart';
+import 'package:parkeaseapp/Screens/login_screen.dart';
 import 'package:parkeaseapp/Screens/profile.dart';
 import 'package:parkeaseapp/Screens/wallet_screen.dart';
 
@@ -20,10 +21,9 @@ class _MyHomePageState extends State<MyHomePage> {
   });
   switch (index) {
     case 0:
-      Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage()));
       break;
     case 1:
-      Navigator.push(context, MaterialPageRoute(builder: (context) => GetStarted()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
       break;
     case 2:
       Navigator.push(context, MaterialPageRoute(builder: (context) => WalletScreen()));
@@ -70,7 +70,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     icon: const Icon(Icons.account_circle_outlined,color: Colors.white,),
                     iconSize: 40,
                     onPressed: () {
-                      // Add your search button functionality here
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfileScreen()),
+                    );// Add your search button functionality here
                     },
                   ),]),
               const Padding(
