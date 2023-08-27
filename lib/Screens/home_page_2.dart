@@ -1,7 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-class MyHomePage extends StatelessWidget {
+import 'package:parkeaseapp/Screens/get_started.dart';
+
+
+class MyHomePage extends StatefulWidget {
    
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _selectedIndex = 0; // Initialize with the default selected index
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+  });
+  switch (index) {
+    case 0:
+      Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage()));
+      break;
+    case 1:
+      Navigator.push(context, MaterialPageRoute(builder: (context) => GetStarted()));
+      break;
+    // Add cases for other pages
+  }
+  // Now navigate to the corresponding page based on the index
+  // You can use Navigator.push or your preferred navigation method
+}
   @override
   Widget build(BuildContext context) {
     const String username = 'User'; // Change this value to take first name from profile.
@@ -33,7 +59,7 @@ class MyHomePage extends StatelessWidget {
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.person_2_outlined,color: Colors.white,),
+                    icon: const Icon(Icons.account_circle_outlined,color: Colors.white,),
                     iconSize: 40,
                     onPressed: () {
                       // Add your search button functionality here
@@ -204,11 +230,47 @@ class MyHomePage extends StatelessWidget {
             ],
           ),
         ),
-      ), // Padding widget ends here
+      ),
+      bottomNavigationBar: Container(
+  decoration: const BoxDecoration(
+    color: Colors.black,
+    borderRadius: BorderRadius.only(
+      topLeft: Radius.circular(20),
+      topRight: Radius.circular(20),
+    ),
+  ),
+  child: BottomNavigationBar(
+    type: BottomNavigationBarType.fixed,
+    backgroundColor: Colors.black,
+    items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home, color: Colors.white),
+              label: 'Home',
+              
+            ),
+            BottomNavigationBarItem(
+              icon:Icon(Icons.map_outlined, color: Colors.white),
+              label: 'Search',
+            ),
+            BottomNavigationBarItem(
+              icon:Icon(Icons.wallet, color: Colors.white),
+              label: 'Wallet',
+            ),
+            BottomNavigationBarItem(
+              icon:Icon(Icons.account_circle_outlined, color: Colors.white),
+              label: 'Account',
+            ),
+          ],
+    currentIndex: _selectedIndex,
+    selectedItemColor: Colors.white,
+    unselectedItemColor: Colors.white,
+    onTap: _onItemTapped,
+  ),
+)
+
+, // Padding widget ends here
     ); // Scaffold widget ends here
   }
-
-  
 
   Widget _buildContentItem(String title, String description, String imagePath) {
     return Column(
@@ -253,6 +315,9 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+
+
+
 
 Future<void> _checkLocationService(BuildContext context) async {
   if (!await Geolocator.isLocationServiceEnabled()) {
