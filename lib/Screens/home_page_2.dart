@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:parkeaseapp/Screens/get_started.dart';
+import 'package:parkeaseapp/Screens/wallet_screen.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -22,6 +23,9 @@ class _MyHomePageState extends State<MyHomePage> {
       break;
     case 1:
       Navigator.push(context, MaterialPageRoute(builder: (context) => GetStarted()));
+      break;
+    case 2:
+      Navigator.push(context, MaterialPageRoute(builder: (context) => WalletScreen()));
       break;
     // Add cases for other pages
   }
