@@ -23,15 +23,15 @@ class Settings extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.menu,color:Colors.white,),
+                    icon: const Icon(Icons.arrow_back,color:Colors.white,),
                     iconSize: 40,
                     onPressed: () {
-                      // Add your menu button functionality here
+                      Navigator.pop(context);// Add your menu button functionality here
                     },
                   ),
                   const Text(
                     'Settings',
-                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                   IconButton(
                     icon: const Icon(Icons.account_circle_outlined,color: Colors.white,),

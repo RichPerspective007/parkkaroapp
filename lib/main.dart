@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       ),
     ),
       ),
-      home: QRCodeScreen(),
+      home: GetStarted(),
     );
   }
 }

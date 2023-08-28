@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:parkeaseapp/Screens/get_started.dart';
 import 'package:parkeaseapp/Screens/login_screen.dart';
+import 'package:parkeaseapp/Screens/parking_space.dart';
 import 'package:parkeaseapp/Screens/profile.dart';
 import 'package:parkeaseapp/Screens/wallet_screen.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MyHomePage extends StatefulWidget {
    
@@ -38,7 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
 }
   @override
   Widget build(BuildContext context) {
-    const String username = 'User'; // Change this value to take first name from profile.
+    const String username = 'User';
+    bool bookings=false; // Change this value to take first name from profile.
     _checkLocationService(context);
     List<String> stringList = [];
     return Scaffold(
@@ -131,6 +133,11 @@ class _MyHomePageState extends State<MyHomePage> {
               // Add spacing between categories and content
               // Content for the selected category
               // Example:
+              if (bookings)
+                _buildCategoryContent('Bookings',[_bookedContentItem('BookingID1', 'image1.jpg'),
+                _bookedContentItem('BookingID2', 'image2.jpg'),]),
+              
+              
               _buildCategoryContent('Recent Used Parkings', [
                 // List of content items for Recent Places category
                 // Example:
@@ -284,6 +291,45 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget _buildContentItem(String title, String description, String imagePath) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+            MaterialPageRoute(builder: (context) => ParkingSpaceScreen()),
+          );
+      },
+      child: Container(
+        margin:EdgeInsets.fromLTRB(0, 5, 5, 5),
+        child: Column(
+          children: [
+            Container(
+              width: 120,
+              height: 180,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                image: DecorationImage(
+                  image: AssetImage('assets/images/park.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            SizedBox(height: 5),
+            Container(
+              child:Row(children: [
+                Column(children: [Text('Parking Name'),
+                Text('Street Name',style: TextStyle(fontSize: 12),),
+                Text('Open',style: TextStyle(fontSize: 10,color: Colors.green)),],),
+                Column(children: [SvgPicture.asset('assets/images/charging-pile-fill.svg',),
+                SizedBox(height:14),
+                Text('Full',style:TextStyle(color:Colors.red, fontSize:10))],)
+              ],),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+  Widget _bookedContentItem(String id, String imagePath){
     return Column(
       children: [
         Container(
@@ -297,16 +343,15 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
         ),
-        SizedBox(height: 5),
-        Text(
-          title,
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        Text(description),
-      ],
+        SizedBox(height: 5,),
+        Container(child: Column(
+          children: [
+            Row(children: [Text('Time:'),Text('TimeSlotVarHere')]),
+            Row(children: [Text('SlotID:'),Text('SlotIDVarHere')]),
+          ],
+        ),)]
     );
   }
-
   Widget _buildCategoryContent(String categoryName, List<Widget> contentItems) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

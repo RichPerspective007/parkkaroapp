@@ -138,7 +138,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(carNumberPlate,textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40, color: Colors.white),)
+                          Text(carNumberPlate,textAlign: TextAlign.center,style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30, color: Colors.white),)
                         ],
                       ),
                     ),
