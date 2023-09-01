@@ -1,7 +1,4 @@
-<div align="center">
- <kbd><img src="./Logo.png" width="" height="300"/></kbd>
-</div>
-<br/>
+
 
 # ParkEase-An innovation to solve the parking problem in India©
 
