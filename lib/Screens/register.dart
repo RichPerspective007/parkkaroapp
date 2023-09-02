@@ -66,7 +66,7 @@ class _RegisterViewState extends State<RegisterView> {
                     },
                   ),
                   const Text(
-                    'Settings',
+                    'Register',
                     style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
                   ),
                   SizedBox(

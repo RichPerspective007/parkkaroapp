@@ -53,8 +53,8 @@ class Settings extends StatelessWidget {
           child: Column(
             children: [
               CustomizedClickableContainer.icon(
-                text: 'Set Time',
-                customIconData: Icons.lock_clock,
+                text: 'Languages',
+                customIconData: Icons.language,
                 onTap: () {
                    /*Navigator.push(
                       context,
@@ -68,8 +68,8 @@ class Settings extends StatelessWidget {
                 height: 12,
               ),
               CustomizedClickableContainer.icon(
-                text: 'Set Location',
-                customIconData: Icons.location_city,
+                text: 'Rules and Terms',
+                customIconData: Icons.rule,
                 onTap: () {
                    /*Navigator.push(
                       context,
@@ -180,6 +180,21 @@ class Settings extends StatelessWidget {
                       context,
                       MaterialPageRoute(builder: (context) => Settings()),
                     );*/// Action for tapping container
+                },
+                customContainerColor: Colors.white24,    // Custom container color
+                customContainerHeight: scrHeight/(800/60),        // Custom container height
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              CustomizedClickableContainer.icon(
+                text: 'Log Out',
+                customIconData: Icons.logout,
+                onTap: () {
+                   Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Settings()),
+                    );// Action for tapping container
                 },
                 customContainerColor: Colors.white24,    // Custom container color
                 customContainerHeight: scrHeight/(800/60),        // Custom container height

@@ -27,8 +27,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.greenAccent, // background (button) color
-        foregroundColor: Colors.black, // foreground (text) color
+        backgroundColor: Colors.orange, // background (button) color
+        foregroundColor: Colors.white, // foreground (text) color
       ),
     ),
       ),

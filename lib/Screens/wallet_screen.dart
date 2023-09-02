@@ -237,6 +237,18 @@ class _WalletScreenState extends State<WalletScreen> {
                   SizedBox(
                     height: 10,
                   ),
+                  CustomizedClickableContainer.asset(
+                      text: 'Legal',
+                      customIconAsset: 'assets/images/history.svg',
+                      onTap: () {
+                        // Action for tapping container
+                      },
+                      customContainerColor: Colors.white24,    // Custom container color
+                      customContainerHeight: scrHeight/(800/60),        // Custom container height
+                    ),
+                    SizedBox(
+                    height: 10,
+                  ),
 
     ])),
         
