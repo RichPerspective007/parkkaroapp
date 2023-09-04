@@ -3,6 +3,7 @@ import 'package:parkeaseapp/Constants/clickable_container.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
 import 'package:parkeaseapp/Screens/get_started.dart';
 import 'package:parkeaseapp/Screens/home_page_2.dart';
+import 'package:parkeaseapp/Screens/menu_widget.dart';
 import 'package:parkeaseapp/Screens/settings_screen.dart';
 import 'package:parkeaseapp/Screens/wallet_screen.dart';
 
@@ -40,13 +41,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
 }
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     double scrWidth = Constants.screenWidth(context);
     double scrHeight = Constants.screenHeight(context);
     const String userName = 'User';
     const String carNumberPlate = 'WB **** ** 7845';
-    print(scrHeight);
-    print(scrWidth);
     return Scaffold(
+      key: scaffoldKey,
+      drawer: NavDrawer(),
       body: SingleChildScrollView(
         child: Container(
           margin:EdgeInsets.all(20),
@@ -69,18 +71,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     height:20
                                   ),
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Container(margin:EdgeInsets.fromLTRB(5, 0, 0, 0),child: Icon(Icons.menu, color: Colors.white,)), // Replace with your desired icon
+                                      IconButton(
+                                        icon: const Icon(Icons.menu,color:Colors.white,),
+                                        iconSize: 40,
+                                        onPressed: () {
+                                          scaffoldKey.currentState?.openDrawer();// Add your menu button functionality here
+                                        },
+                                      ),
+                                      SizedBox(width:60), // Replace with your desired icon
                                       Text(
                                         'Profile',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 27, color: Colors.white),
                                       ),
-                                      SizedBox(width: 24.0), // Add space on the right
+                                      SizedBox(width: 10.0), // Add space on the right
                                     ],
                                   ),
-                                  SizedBox(height: 24.0), // Space between rows
+                                  SizedBox(height: 10.0), // Space between rows
 
                                   // Second Child: Circular Profile Image
                                   Container(
@@ -92,13 +100,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     ),
                                     child: Image.asset('assets/images/profile-photo.png'),
                                   ),
-                                  SizedBox(height: 16.0), // Space between rows
+                                  SizedBox(height: 13.0), // Space between rows
 
                                   // Third Child: Centered Text
                                   Row(
                                     children: [
                                       SizedBox(
-                                        width:scrWidth/2 - 70,
+                                        width:scrWidth/2 - 80,
                                       ),
                                       Text(
                                         'Hello, ',
@@ -112,7 +120,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(height: 12.0), // Space between rows
+                                  SizedBox(height: 10.0), // Space between rows
 
                                   // Fourth Child: Centered Text
                                   Text(

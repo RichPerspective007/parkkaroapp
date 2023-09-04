@@ -107,23 +107,32 @@ class MyClickableContainer extends StatelessWidget {
 class CustomizedClickableContainer extends MyClickableContainer {
   final Color customContainerColor;
   final double customContainerHeight;
+  final double? customContainerWidth;
   final dynamic customIcon;
+  final dynamic customAlign;
+  final dynamic customBorder;
 
   CustomizedClickableContainer.asset({
+    this.customAlign,
     required String text,
     required String customIconAsset,
     required VoidCallback onTap,
     required this.customContainerColor,
     required this.customContainerHeight,
+    this.customContainerWidth,
+    this.customBorder
   })  : customIcon = customIconAsset,
         super(text: text, customIconAsset: customIconAsset, onTap: onTap);
 
   CustomizedClickableContainer.icon({
+    this.customAlign,
     required String text,
     required IconData customIconData,
     required VoidCallback onTap,
     required this.customContainerColor,
     required this.customContainerHeight,
+    this.customContainerWidth,
+    this.customBorder
   })  : customIcon = customIconData,
         super(text: text, customIconAsset: '', onTap: onTap);
 
@@ -134,10 +143,10 @@ class CustomizedClickableContainer extends MyClickableContainer {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: scrWidth - 30,
+        width: customContainerWidth ?? scrWidth - 30,
         height: customContainerHeight,
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.black, width: 2.0),
+          border: customBorder ?? Border.all(color: Colors.black, width: 2.0),
           borderRadius: BorderRadius.circular(26), // Adding black border
         ),
         child: Container(
@@ -148,8 +157,10 @@ class CustomizedClickableContainer extends MyClickableContainer {
             ),
           ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: customAlign ?? MainAxisAlignment.center,
             children: [
+              if (customAlign!=null)
+                SizedBox(width:10), 
               if (customIcon is String)
                 SvgPicture.asset(
                   customIcon,

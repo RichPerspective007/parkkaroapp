@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:parkeaseapp/Screens/bookpay.dart';
 import 'package:parkeaseapp/Screens/get_started.dart';
 import 'package:parkeaseapp/Screens/login_screen.dart';
+import 'package:parkeaseapp/Screens/menu_widget.dart';
 import 'package:parkeaseapp/Screens/parking_space.dart';
 import 'package:parkeaseapp/Screens/profile.dart';
+import 'package:parkeaseapp/Screens/search_page.dart';
 import 'package:parkeaseapp/Screens/wallet_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -37,13 +40,23 @@ class _MyHomePageState extends State<MyHomePage> {
   // Now navigate to the corresponding page based on the index
   // You can use Navigator.push or your preferred navigation method
 }
+  void _dismissKeyboard(BuildContext context) {
+    final FocusScopeNode currentFocus = FocusScope.of(context);
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.unfocus();
+    }
+  }
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
     const String username = 'User';
     bool bookings=false; // Change this value to take first name from profile.
     _checkLocationService(context);
     List<String> stringList = [];
     return Scaffold(
+      key: _scaffoldKey,
+      drawer: NavDrawer(),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(90), // Specify the desired height
         child: Container(
@@ -61,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     icon: const Icon(Icons.menu,color:Colors.white,),
                     iconSize: 40,
                     onPressed: () {
-                      // Add your menu button functionality here
+                      _scaffoldKey.currentState?.openDrawer();// Add your menu button functionality here
                     },
                   ),
                   const Text(
@@ -118,12 +131,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         // Add your search functionality here
                       },
                     ),
-                    const Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Search using landmark, street, monument or location.',
-                          border: InputBorder.none,
-                        ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage()));
+                      },
+                      child: Container(
+                        child: Text(
+                          'Search using landmark, street, or monument.',
+                          style: TextStyle(fontWeight: FontWeight.w300,color: Colors.black),
+                          ),
                       ),
                     ),
                   ],
@@ -134,26 +150,26 @@ class _MyHomePageState extends State<MyHomePage> {
               // Content for the selected category
               // Example:
               if (bookings)
-                _buildCategoryContent('Bookings',[_bookedContentItem('BookingID1', 'image1.jpg'),
-                _bookedContentItem('BookingID2', 'image2.jpg'),]),
+                _buildCategoryContent('Bookings',[_bookedContentItem('BookingID1', 'assets/images/park.png'),
+                _bookedContentItem('BookingID2', 'assets/images/park.png'),]),
               
               
-              _buildCategoryContent('Recent Used Parkings', [
+              _buildCategoryContent('Nearby Parkings', [
                 // List of content items for Recent Places category
                 // Example:
-                _buildContentItem('Parking 1', 'Description 1', 'image1.jpg'),
-                _buildContentItem('Parking 2', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 3', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 4', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 5', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 6', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 7', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 8', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 9', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 10', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 11', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 12', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 13', 'Description 2', 'image2.jpg'),
+                _buildContentItem('Parking 1', 'Description 1', 'assets/images/park.png'),
+                _buildContentItem('Parking 2', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 3', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 4', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 5', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 6', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 7', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 8', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 9', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 10', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 11', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 12', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 13', 'Description 2', 'assets/images/park.png'),
                 // ...
               ],),
               SizedBox(height: 20), // Add spacing between search bar and categories
@@ -163,128 +179,89 @@ class _MyHomePageState extends State<MyHomePage> {
               _buildCategoryContent('Recent Used Parkings', [
                 // List of content items for Recent Places category
                 // Example:
-                _buildContentItem('Parking 1', 'Description 1', 'image1.jpg'),
-                _buildContentItem('Parking 2', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 3', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 4', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 5', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 6', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 7', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 8', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 9', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 10', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 11', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 12', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 13', 'Description 2', 'image2.jpg'),
+                _buildContentItem('Parking 1', 'Description 1', 'assets/images/park.png'),
+                _buildContentItem('Parking 2', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 3', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 4', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 5', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 6', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 7', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 8', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 9', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 10', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 11', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 12', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 13', 'Description 2', 'assets/images/park.png'),
                 // ...
               ],),
               SizedBox(height: 20), // Add spacing between search bar and categories
               // Add spacing between categories and content
               // Content for the selected category
               // Example:
-              _buildCategoryContent('Recent Used Parkings', [
+              _buildCategoryContent('Favourites', [
                 // List of content items for Recent Places category
                 // Example:
-                _buildContentItem('Parking 1', 'Description 1', 'image1.jpg'),
-                _buildContentItem('Parking 2', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 3', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 4', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 5', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 6', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 7', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 8', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 9', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 10', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 11', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 12', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 13', 'Description 2', 'image2.jpg'),
+                _buildContentItem('Parking 1', 'Description 1', 'assets/images/park.png'),
+                _buildContentItem('Parking 2', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 3', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 4', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 5', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 6', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 7', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 8', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 9', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 10', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 11', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 12', 'Description 2', 'assets/images/park.png'),
+                _buildContentItem('Parking 13', 'Description 2', 'assets/images/park.png'),
                 // ...
               ],),
               SizedBox(height: 20), // Add spacing between search bar and categories
               // Add spacing between categories and content
               // Content for the selected category
               // Example:
-              _buildCategoryContent('Recent Used Parkings', [
-                // List of content items for Recent Places category
-                // Example:
-                _buildContentItem('Parking 1', 'Description 1', 'image1.jpg'),
-                _buildContentItem('Parking 2', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 3', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 4', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 5', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 6', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 7', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 8', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 9', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 10', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 11', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 12', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 13', 'Description 2', 'image2.jpg'),
-                // ...
-              ],),
-              SizedBox(height: 20), // Add spacing between search bar and categories
-              // Add spacing between categories and content
-              // Content for the selected category
-              // Example:
-              _buildCategoryContent('Recent Used Parkings', [
-                // List of content items for Recent Places category
-                // Example:
-                _buildContentItem('Parking 1', 'Description 1', 'image1.jpg'),
-                _buildContentItem('Parking 2', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 3', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 4', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 5', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 6', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 7', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 8', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 9', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 10', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 11', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 12', 'Description 2', 'image2.jpg'),
-                _buildContentItem('Parking 13', 'Description 2', 'image2.jpg'),
-                // ...
-              ],),
+              
               // Repeat similar content sections for other categories
             ],
           ),
         ),
       ),
       bottomNavigationBar: Container(
-  decoration: const BoxDecoration(
-    color: Colors.black,
-    borderRadius: BorderRadius.only(
-      topLeft: Radius.circular(20),
-      topRight: Radius.circular(20),
-    ),
-  ),
-  child: BottomNavigationBar(
-    type: BottomNavigationBarType.fixed,
-    backgroundColor: Colors.black,
-    items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home, color: Colors.white),
-              label: 'Home',
-              
-            ),
-            BottomNavigationBarItem(
-              icon:Icon(Icons.map_outlined, color: Colors.white),
-              label: 'Search',
-            ),
-            BottomNavigationBarItem(
-              icon:Icon(Icons.wallet, color: Colors.white),
-              label: 'Wallet',
-            ),
-            BottomNavigationBarItem(
-              icon:Icon(Icons.account_circle_outlined, color: Colors.white),
-              label: 'Account',
-            ),
-          ],
-    currentIndex: _selectedIndex,
-    selectedItemColor: Colors.white,
-    unselectedItemColor: Colors.white,
-    onTap: _onItemTapped,
-  ),
-)
+        decoration: const BoxDecoration(
+          color: Colors.black,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+        ),
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Colors.black,
+          items: const [
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home, color: Colors.white),
+                    label: 'Home',
+                    
+                  ),
+                  BottomNavigationBarItem(
+                    icon:Icon(Icons.map_outlined, color: Colors.white),
+                    label: 'Search',
+                  ),
+                  BottomNavigationBarItem(
+                    icon:Icon(Icons.wallet, color: Colors.white),
+                    label: 'Wallet',
+                  ),
+                  BottomNavigationBarItem(
+                    icon:Icon(Icons.account_circle_outlined, color: Colors.white),
+                    label: 'Account',
+                  ),
+                ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white,
+          onTap: _onItemTapped,
+        ),
+      )
 
 , // Padding widget ends here
     ); // Scaffold widget ends here
@@ -295,7 +272,7 @@ class _MyHomePageState extends State<MyHomePage> {
       onTap: () {
         Navigator.push(
           context,
-            MaterialPageRoute(builder: (context) => ParkingSpaceScreen()),
+            MaterialPageRoute(builder: (context) => PayAndBook()),
           );
       },
       child: Container(
@@ -308,21 +285,26 @@ class _MyHomePageState extends State<MyHomePage> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
-                  image: AssetImage('assets/images/park.png'),
+                  image: AssetImage(imagePath),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
             SizedBox(height: 5),
-            Container(
-              child:Row(children: [
-                Column(children: [Text('Parking Name'),
+            Center(
+              child: Container(
+                width: 120,
+                height: 70,
+                alignment: Alignment.center,
+                margin:EdgeInsets.fromLTRB(5, 5, 5, 5),
+                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10),),
+                child:Column(children: [Text('Parking Name'),
                 Text('Street Name',style: TextStyle(fontSize: 12),),
-                Text('Open',style: TextStyle(fontSize: 10,color: Colors.green)),],),
-                Column(children: [SvgPicture.asset('assets/images/charging-pile-fill.svg',),
-                SizedBox(height:14),
-                Text('Full',style:TextStyle(color:Colors.red, fontSize:10))],)
-              ],),
+                Text('Open',style: TextStyle(fontSize: 10,color: Colors.green)),
+                Text('Full',style:TextStyle(color:Colors.red, fontSize:10)),
+                
+                ],),
+              ),
             ),
           ],
         ),
@@ -356,9 +338,15 @@ class _MyHomePageState extends State<MyHomePage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
-          categoryName,
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        Row(
+          children: [
+            if (categoryName == 'Favourites')
+              Icon(Icons.star),
+            Text(
+              categoryName,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          ],
         ),
         SizedBox(height: 10),
         SingleChildScrollView(

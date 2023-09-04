@@ -3,6 +3,7 @@ import 'package:parkeaseapp/Constants/clickable_container.dart';
 import 'package:parkeaseapp/Screens/get_started.dart';
 import 'package:parkeaseapp/Screens/home_page_2.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
+import 'package:parkeaseapp/Screens/menu_widget.dart';
 import 'package:parkeaseapp/Screens/profile.dart';
 class WalletScreen extends StatefulWidget {
   const WalletScreen({super.key});
@@ -37,9 +38,12 @@ class _WalletScreenState extends State<WalletScreen> {
 } // Change this value to take first name from profile.
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     double scrWidth = Constants.screenWidth(context);
     double scrHeight = Constants.screenHeight(context);
     return Scaffold(
+      key: scaffoldKey,
+      drawer: NavDrawer(),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(90), // Specify the desired height
         child: Container(
@@ -57,7 +61,7 @@ class _WalletScreenState extends State<WalletScreen> {
                     icon: const Icon(Icons.menu,color:Colors.white,),
                     iconSize: 40,
                     onPressed: () {
-                      // Add your menu button functionality here
+                      scaffoldKey.currentState?.openDrawer();// Add your menu button functionality here
                     },
                   ),
                   const Text(
