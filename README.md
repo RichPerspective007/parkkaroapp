@@ -86,19 +86,19 @@ The parking problem in India is a complex and widespread issue that affects urba
 
 ## Technologies💻
 
-1. **React Native:**
-   React Native is a popular open-source framework for building mobile applications using JavaScript and React. It allows developers to create native mobile apps for both iOS and Android platforms using a single codebase. By leveraging a component-based architecture, React Native enables the development of rich, responsive, and visually appealing mobile apps that closely resemble native applications.
+1. **Flutter:**
+   Flutter is an open-source UI software development toolkit created by Google. It allows developers to build natively compiled applications for mobile, web, and desktop from a single codebase. Flutter is known for its fast development, expressive user interfaces, and wide platform support, making it a powerful tool for cross-platform app development. By leveraging a component-based architecture, Flutter enables the development of rich, responsive, and visually appealing mobile apps that closely resemble native applications.
 
 2. **ExpressJS:**
    Express.js is a minimal and flexible web application framework for Node.js. It simplifies the process of building robust and scalable web applications and APIs by providing a range of essential features and tools. Express.js offers a straightforward way to handle routing, middleware, request handling, and response management, making it a preferred choice for developers when building server-side components of web applications.
 
-3. **MongoDB:**
-   MongoDB is a widely used NoSQL database system known for its flexibility and scalability. It stores data in a document-oriented format using JSON-like documents, which allows for dynamic and schema-less data storage. MongoDB is suitable for applications requiring agile development, as it accommodates changes in data structure easily and can handle large amounts of data while providing high performance.
+3. **Firebase:**
+  Firebase is a comprehensive mobile and web application development platform by Google. It provides various backend services like real-time databases, authentication, cloud storage, and hosting. Developers can use Firebase to handle server-side functionalities, store data, authenticate users, and deliver content, simplifying backend development and enabling rapid app deployment.Firebase is suitable for applications requiring agile development, as it accommodates changes in data structure easily and can handle large amounts of data while providing high performance.
 
 4. **Node.js:**
    Node.js is a JavaScript runtime built on the V8 JavaScript engine. It enables developers to execute JavaScript code on the server side, rather than just in web browsers. Node.js excels in building scalable and high-performance applications due to its asynchronous, event-driven architecture. It's often used to build backend services, APIs, and real-time applications.
 
-These technologies, when used together, form a powerful stack for developing modern web and mobile applications. React Native allows you to create a unified mobile app experience, while ExpressJS and Node.js provide the backend infrastructure for handling requests and data processing. MongoDB offers a flexible and scalable database solution that complements the needs of dynamic and growing applications. This stack is known for its efficiency, ease of use, and ability to handle both frontend and backend development using JavaScript, streamlining the development process.
+These technologies, when used together, form a powerful stack for developing modern web and mobile applications. React Native allows you to create a unified mobile app experience, while ExpressJS and Node.js provide the backend infrastructure for handling requests and data processing. Firebase offers a flexible and scalable database solution that complements the needs of dynamic and growing applications. This stack is known for its efficiency, ease of use, and ability to handle both frontend and backend development using JavaScript, streamlining the development process.
 
 ## Contribution👷‍♂️
 
