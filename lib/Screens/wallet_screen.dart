@@ -72,7 +72,10 @@ class _WalletScreenState extends State<WalletScreen> {
                     icon: const Icon(Icons.account_circle_outlined,color: Colors.white,),
                     iconSize: 40,
                     onPressed: () {
-                      // Add your search button functionality here
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProfileScreen()),
+                    );// Add your search button functionality here
                     },
                   ),]),
               const Padding(

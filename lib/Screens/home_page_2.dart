@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:parkeaseapp/Screens/bookpay.dart';
 import 'package:parkeaseapp/Screens/menu_widget.dart';
+import 'package:parkeaseapp/Screens/navigation.dart';
 import 'package:parkeaseapp/Screens/profile.dart';
 import 'package:parkeaseapp/Screens/search_page.dart';
 import 'package:parkeaseapp/Screens/wallet_screen.dart';
@@ -24,7 +25,7 @@ class _MyHomePageState extends State<MyHomePage> {
     case 0:
       break;
     case 1:
-      Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => NavigationScreen()));
       break;
     case 2:
       Navigator.push(context, MaterialPageRoute(builder: (context) => WalletScreen()));
