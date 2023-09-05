@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:parkeaseapp/Screens/qr_screen.dart';
-import 'package:parkeaseapp/Screens/verification_screen.dart';
-import 'package:parkeaseapp/Screens/verified_screen.dart';
 import 'Screens/get_started.dart';
 import 'package:permission_handler/permission_handler.dart';
 

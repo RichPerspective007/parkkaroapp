@@ -22,9 +22,7 @@ class NavDrawer extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                     color: Colors.transparent,
-                    image: DecorationImage(
-                        fit: BoxFit.fill,
-                        image: AssetImage('assets/images/cover.jpg'))),
+                    ),
               ),
             ),
             CustomizedClickableContainer.icon(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:parkeaseapp/Screens/home_page_2.dart';
-import 'package:parkeaseapp/Screens/login_screen.dart';
 import 'package:parkeaseapp/Screens/profile.dart';
 import 'package:parkeaseapp/Screens/wallet_screen.dart';
 
@@ -19,7 +18,6 @@ class _SearchPageState extends State<SearchPage> {
     case 0:
       Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage()));
     case 1:
-      Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
       break;
     case 2:
       Navigator.push(context, MaterialPageRoute(builder: (context) => WalletScreen()));
