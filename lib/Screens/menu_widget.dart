@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:parkeaseapp/Constants/clickable_container.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
+import 'package:parkeaseapp/Screens/profile.dart';
+import 'package:parkeaseapp/Screens/settings_screen.dart';
+import 'package:parkeaseapp/Screens/wallet_screen.dart';
 
 class NavDrawer extends StatelessWidget {
   @override
