@@ -107,18 +107,34 @@ class _WalletScreenState extends State<WalletScreen> {
             Container(
                 width: 160,
                 height: 250,
-                margin:EdgeInsets.all(7),
+                margin:EdgeInsets.all(8),
                 decoration: ShapeDecoration(
                     color: Color(0xFF353535),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                     ),
                 ),
+                child:Column(
+                  children: [
+                    SizedBox(height:20),
+                    Row(
+                      children: [
+                        SizedBox(width: 20),
+                        Image(image: AssetImage('assets/images/card_provider.png'))
+                      ],
+                    ),
+                    Text('**** 5482',style: TextStyle(fontSize: 24,color: Colors.white,fontWeight: FontWeight.w600),),
+                    SizedBox(height:80),
+                    Text('Card Owner',style:TextStyle(color:Colors.white)),
+                    Text('User',style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.w500)),
+                    Text('04/24',style: TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.w400)),
+                  ],
+                )
             ),
             Container(
                 width: 170,
                 height: 250,
-                margin:EdgeInsets.all(8),
+                margin:EdgeInsets.fromLTRB(2, 8, 8, 8),
                 decoration: ShapeDecoration(
                     color: Colors.white,
                     shape: RoundedRectangleBorder(
@@ -131,12 +147,21 @@ class _WalletScreenState extends State<WalletScreen> {
                     height: 120,
                     margin: EdgeInsets.fromLTRB(0, 0, 0, 5),
                     decoration: ShapeDecoration(
-                        color: Color(0xFF353535),
+                        color: Colors.white38,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                         ),
                     ),
-                      ),
+                    child:Center(
+                      child:Column(
+                        children: [
+                          SizedBox(height:35),
+                          Text('004.67TK',style:TextStyle(color:Colors.black,fontSize: 24,fontWeight: FontWeight.bold)),
+                          Text('Total tokens')
+                        ],
+                      )
+                    )
+                  ),
                   Container(
                     width: 170,
                     height: 120,
@@ -147,10 +172,19 @@ class _WalletScreenState extends State<WalletScreen> {
                             borderRadius: BorderRadius.circular(30),
                               ),
                           ),
-                            ),
-                        ]),
+                        child:Center(
+                          child:Column(
+                            children: [
+                              SizedBox(height:35),
+                              Text('99.99 INR',style:TextStyle(color:Colors.white,fontSize: 24,fontWeight: FontWeight.bold)),
+                              Text('Total balance',style: TextStyle(color: Colors.white),)
+                            ],
+                          )
+                        )
+                        ),
+                      ]),
                       
-                      ),
+                    ),
               
                     ],),
                   ),

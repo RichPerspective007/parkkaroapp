@@ -18,21 +18,22 @@ class NavDrawer extends StatelessWidget {
             Container(
               height:scrHeight/8,
               alignment: Alignment.centerLeft,
-              child: DrawerHeader(
+              child: const DrawerHeader(
+                decoration: BoxDecoration(
+                    color: Colors.transparent,
+                ),
                 child: Text(
                   'Menu',
                   style: TextStyle(color: Colors.black, fontSize: 25),
                 ),
-                decoration: BoxDecoration(
-                    color: Colors.transparent,
-                ),
+                
               ),
             ),
             CustomizedClickableContainer.icon(
                       text: 'Account',
                       customIconData: Icons.account_circle_rounded,
                       onTap: () {
-                        // Action for tapping container
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));// Action for tapping container
                       },
                       customContainerColor: Colors.white24,    // Custom container color
                       customContainerHeight: scrHeight/(800/60),
@@ -45,7 +46,7 @@ class NavDrawer extends StatelessWidget {
                       text: 'Wallet',
                       customIconData: Icons.wallet_rounded,
                       onTap: () {
-                        // Action for tapping container
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => WalletScreen()));// Action for tapping container
                       },
                       customContainerColor: Colors.white24,    // Custom container color
                       customContainerHeight: scrHeight/(800/60),
@@ -58,7 +59,7 @@ class NavDrawer extends StatelessWidget {
                       text: 'Settings',
                       customIconData: Icons.settings,
                       onTap: () {
-                        // Action for tapping container
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));// Action for tapping container
                       },
                       customContainerColor: Colors.white24,    // Custom container color
                       customContainerHeight: scrHeight/(800/60),
