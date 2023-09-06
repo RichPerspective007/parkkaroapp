@@ -13,7 +13,7 @@ class PayAndBook extends StatefulWidget {
 class _PayAndBookState extends State<PayAndBook> {
   TimeOfDay selectedTime = TimeOfDay.now();
   int quantity = 0;
-  double rate = 200.0;
+  double rate = 50.0;
   double totalPrice = 0.0;
   void incrementQuantity() {
     setState(() {
@@ -53,7 +53,7 @@ class _PayAndBookState extends State<PayAndBook> {
           Column(children: [
             SizedBox(height:25),
             Container(
-              height:scrHeight*5/8,
+              height:scrHeight*5.5/8,
               width:scrWidth-15,
               margin: EdgeInsets.only(left:7,right:7),
               decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(30)),
@@ -73,14 +73,14 @@ class _PayAndBookState extends State<PayAndBook> {
                       ),
                     ),
                   ),
-                SizedBox(height:5),
+                SizedBox(height:15),
                 const Row(children: [
                   SizedBox(width:50),
                   Column(children: [Text('Parking name',style:TextStyle(color:Colors.white,fontSize: 24)),Text('Street name',style:TextStyle(color:Colors.white,fontSize: 16))],),
                   SizedBox(width:50),
                   Text('Open',style:TextStyle(color:Colors.white,fontSize: 16))
                 ],),
-                SizedBox(height:15),
+                SizedBox(height:5),
                 Center(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -127,7 +127,7 @@ class _PayAndBookState extends State<PayAndBook> {
               ],)
             ),
             Container(
-              height:scrHeight*2.5/8,
+              height:scrHeight*2/8,
               width:scrWidth-15,
               margin: EdgeInsets.only(left:7,right:7),
               decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(30)),

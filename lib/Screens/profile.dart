@@ -120,7 +120,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(height: 10.0), // Space between rows
+                                  SizedBox(height: 5.0), // Space between rows
 
                                   // Fourth Child: Centered Text
                                   Text(

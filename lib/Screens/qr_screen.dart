@@ -13,54 +13,59 @@ class _QRCodeScreenState extends State<QRCodeScreen> {
     double scrWidth = Constants.screenWidth(context);
     double scrHeight = Constants.screenHeight(context);
     return Scaffold(
-      body: Container(
-        height: scrHeight,
-        color: Color.fromARGB(250,217,217,217),
-        child: Column(
-          children: [
-            Container(
-              width:scrWidth-15,
-              height:scrHeight/2,
-              margin:EdgeInsets.fromLTRB(7.5, 10, 7.5, 2),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(25),color: Colors.lightBlue),
-              child: Center(
-                child: Container(
-                  width: 278,
-                  height: 278,
-                  color: Colors.grey[200],
-                  child: Center(
-                    child: Image(image: AssetImage('assets/images/qr_example.png')), // Placeholder for the QR code widget
+      body: SingleChildScrollView(
+        child: Container(
+          height: scrHeight,
+          color: Color.fromARGB(250,217,217,217),
+          child: Column(
+            children: [
+              Container(
+                width:scrWidth-15,
+                height:scrHeight/2,
+                margin:EdgeInsets.fromLTRB(7.5, 10, 7.5, 2),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(25),color: Colors.lightBlue),
+                child: Center(
+                  child: Container(
+                    width: 278,
+                    height: 278,
+                    color: Colors.grey[200],
+                    child: Center(
+                      child: Image(image: AssetImage('assets/images/qr_example.png')), // Placeholder for the QR code widget
+                    ),
+                  ))),
+              Container(
+                  width: scrWidth-15,
+                  height: 100,
+                  decoration: ShapeDecoration(
+                      color: Colors.lightBlue,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                      ),
                   ),
-                ))),
-            Container(
-                width: scrWidth-15,
-                height: 100,
-                decoration: ShapeDecoration(
-                    color: Colors.lightBlue,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                    ),
-                ),
-            ),
-            SizedBox(height: 15),
-            ElevatedButton(onPressed: () {
-              
-            }, child: Text('Resend')),
-            ElevatedButton(onPressed: () {
-              
-            }, child: Text('Cancel')),
-            SizedBox(height: 15),
-            Container(
-                width: scrWidth-15,
-                height: 100,
-                decoration: ShapeDecoration(
-                    color: Color(0xFF353535),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                    ),
-                ),
-            )
-          ]
+              ),
+              SizedBox(height: 10),
+              ElevatedButton(onPressed: () {
+                
+              }, child: Text('Resend')),
+              ElevatedButton(onPressed: () {
+                
+              }, child: Text('Cancel')),
+              SizedBox(height: 10),
+              Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.all(12),
+                  width: scrWidth-15,
+                  height: scrHeight/8.5,
+                  decoration: ShapeDecoration(
+                      color: Color(0xFF353535),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                      ),
+                  ),
+                  child: Text('NOTE:\nThis QR Code is confidential. Please do not share this with anyone else.',style: TextStyle(color: Colors.white),),
+              )
+            ]
+          ),
         ),
       ),
     );

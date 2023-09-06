@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:parkeaseapp/Screens/home_page_2.dart';
 
 class Verified extends StatelessWidget {
   const Verified({super.key});
@@ -39,7 +40,7 @@ class Verified extends StatelessWidget {
                   
                   SizedBox(height:15),
                   ElevatedButton(onPressed: () {
-                    
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage()));
                   }, child: Text('Continue'))
                 ],)
               )
