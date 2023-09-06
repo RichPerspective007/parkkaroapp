@@ -103,11 +103,12 @@ These technologies, when used together, form a powerful stack for developing mod
 ## Contribution👷‍♂️
 
 **Concept:** [Promit Chaudhuri](https://github.com/ProSkywalker16) and [Subhadip Santra](https://github.com/Subhadip05Santra) <br/>
-**Design:** [Promit Chaudhuri](https://github.com/ProSkywalker16) <br/>
-**Frontend:** [Debarshee Chakraborty](https://github.com/debarshee2004) <br/>
-**Backend:** [Promit Chaudhuri](https://github.com/ProSkywalker16) <br/>
-**API:** [Subhadip Santra](https://github.com/Subhadip05Santra) and [Soham Bannerjee](https://github.com/sohambanerjee10) <br/>
-**Documentation:** [Debarshee Chakraborty](https://github.com/debarshee2004)
+**Design & UI/UX:** [Promit Chaudhuri]and [Sneha Chakraborty](https://github.com/SnehaChakraborty-007) <br/>
+**Frontend:** [Shivaditya Bhattacharya](https://github.com/RichPerspective007) <br/>
+**Backend:** [Promit Chaudhuri](https://github.com/ProSkywalker16), [Soham Banerjee](https://github.com/sohambanerjee10) and [Sneha Chakraborty] <br/>
+**API:** [Subhadip Santra](https://github.com/Subhadip05Santra) and [Soham Bannerjee] <br/>
+**Artificial Intelligence and Machine Learning:**[Debarshee Chakraborty](https://github.com/debarshee2004)<br/>
+**Documentation:** [Debarshee Chakraborty] and [Promit Chaudhuri] 
 
 ## License📌
 
