@@ -3,8 +3,8 @@ import 'package:parkeaseapp/Constants/clickable_container.dart';
 import 'package:parkeaseapp/Screens/home_page_2.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
 import 'package:parkeaseapp/Screens/menu_widget.dart';
+import 'package:parkeaseapp/Screens/navigation.dart';
 import 'package:parkeaseapp/Screens/profile.dart';
-import 'package:parkeaseapp/Screens/search_page.dart';
 class WalletScreen extends StatefulWidget {
   const WalletScreen({super.key});
 
@@ -25,7 +25,7 @@ class _WalletScreenState extends State<WalletScreen> {
       Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage()));
       break;
     case 1:
-      Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => NavigationScreen()));
       break;
     case 2:
       break;

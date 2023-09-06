@@ -3,7 +3,7 @@ import 'package:parkeaseapp/Constants/clickable_container.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
 import 'package:parkeaseapp/Screens/home_page_2.dart';
 import 'package:parkeaseapp/Screens/menu_widget.dart';
-import 'package:parkeaseapp/Screens/search_page.dart';
+import 'package:parkeaseapp/Screens/navigation.dart';
 import 'package:parkeaseapp/Screens/settings_screen.dart';
 import 'package:parkeaseapp/Screens/wallet_screen.dart';
 
@@ -27,7 +27,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage()));
       break;
     case 1:
-      Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => NavigationScreen()));
       break;
     case 2:
       Navigator.push(context, MaterialPageRoute(builder: (context) => WalletScreen()));

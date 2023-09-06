@@ -34,10 +34,10 @@ class _MyHomePageState extends State<MyHomePage> {
       Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
       break;
     // Add cases for other pages
-  }
+   }
   // Now navigate to the corresponding page based on the index
   // You can use Navigator.push or your preferred navigation method
-}
+  }
   void _dismissKeyboard(BuildContext context) {
     final FocusScopeNode currentFocus = FocusScope.of(context);
     if (!currentFocus.hasPrimaryFocus) {
