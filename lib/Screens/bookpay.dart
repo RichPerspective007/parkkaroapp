@@ -141,7 +141,8 @@ class _PayAndBookState extends State<PayAndBook> {
                     width:200,
                     child: ElevatedButton(onPressed:() {
                       
-                    }, 
+      Navigator.push(context, MaterialPageRoute(builder: (context) => QRCodeScreen()));    
+                }, 
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
                       foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
