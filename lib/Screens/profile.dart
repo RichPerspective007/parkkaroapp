@@ -6,6 +6,7 @@ import 'package:parkeaseapp/Screens/menu_widget.dart';
 import 'package:parkeaseapp/Screens/navigation.dart';
 import 'package:parkeaseapp/Screens/settings_screen.dart';
 import 'package:parkeaseapp/Screens/wallet_screen.dart';
+import 'package:parkeaseapp/main.dart';
 
 
 class ProfileScreen extends StatefulWidget {
@@ -51,9 +52,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
       drawer: NavDrawer(),
       body: SingleChildScrollView(
         child: Container(
-          margin:EdgeInsets.all(20),
+          color: context.isDarkMode?Color(0xFF353535):Colors.white,
+          width: scrWidth,
           child: Column(
                   children: [
+                    SizedBox(height:10),
                     Container(
                       width: 350,
                       height: scrHeight/2,
@@ -141,6 +144,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           color: Color(0xFF353535),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
+                              side: BorderSide(
+                                width: 2,
+                                color: context.isDarkMode ? Colors.blue: Colors.transparent,
+                            )
                           ),
                       ),
                       child: Column(

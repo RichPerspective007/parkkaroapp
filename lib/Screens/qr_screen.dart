@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
+import 'package:parkeaseapp/main.dart';
 
 
 class QRCodeScreen extends StatefulWidget {
@@ -16,7 +17,7 @@ class _QRCodeScreenState extends State<QRCodeScreen> {
       body: SingleChildScrollView(
         child: Container(
           height: scrHeight,
-          color: Color.fromARGB(250,217,217,217),
+          color:context.isDarkMode?Color(0xFF353535):Color.fromARGB(250,217,217,217),
           child: Column(
             children: [
               Container(
@@ -60,6 +61,7 @@ class _QRCodeScreenState extends State<QRCodeScreen> {
                       color: Color(0xFF353535),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
+                          side: BorderSide(style:BorderStyle.solid,color: context.isDarkMode?Color.fromARGB(198, 237, 138, 25):Colors.transparent,width: 1.0)
                       ),
                   ),
                   child: Text('NOTE:\nThis QR Code is confidential. Please do not share this with anyone else.',style: TextStyle(color: Colors.white),),

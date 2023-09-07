@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
 import 'package:parkeaseapp/Screens/qr_screen.dart';
+import 'package:parkeaseapp/main.dart';
 
 
 class PayAndBook extends StatefulWidget {
@@ -56,7 +57,7 @@ class _PayAndBookState extends State<PayAndBook> {
               height:scrHeight*5.5/8,
               width:scrWidth-15,
               margin: EdgeInsets.only(left:7,right:7),
-              decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(30)),
+              decoration: BoxDecoration(color: context.isDarkMode?Color(0xFF353535):Color(0xFF3392EA),borderRadius: BorderRadius.circular(30)),
               child:Column(
                 children: [
                 SizedBox(height:30),
@@ -93,10 +94,10 @@ class _PayAndBookState extends State<PayAndBook> {
                       OutlinedButton(
                         onPressed: () => _selectTime(context),
                         style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(Colors.white),), // Change the color here
+                          backgroundColor: MaterialStateProperty.all<Color>(context.isDarkMode?Colors.blueGrey:Colors.white),), // Change the color here
                           // You can customize other button properties here as well, like text color, shape, etc.
                 
-                        child: Text('Pick a Time',style:TextStyle(color:Colors.blue)),
+                        child: Text('Pick a Time',style:TextStyle(color:context.isDarkMode?Colors.white:Color(0xFF3392EA))),
                       ),
                     ],
                   ),
@@ -130,7 +131,7 @@ class _PayAndBookState extends State<PayAndBook> {
               height:scrHeight*2/8,
               width:scrWidth-15,
               margin: EdgeInsets.only(left:7,right:7),
-              decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(30)),
+              decoration: BoxDecoration(color: context.isDarkMode?Color(0xFF353535):Color(0xFF3392EA),borderRadius: BorderRadius.circular(30)),
               child: Center(
                 child:Column(children: [
                   SizedBox(height:30),
@@ -144,8 +145,8 @@ class _PayAndBookState extends State<PayAndBook> {
       Navigator.push(context, MaterialPageRoute(builder: (context) => QRCodeScreen()));    
                 }, 
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                      foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
+                      backgroundColor: MaterialStateProperty.all<Color>(context.isDarkMode?Colors.blueGrey:Colors.white),
+                      foregroundColor: MaterialStateProperty.all<Color>(context.isDarkMode?Colors.white:Color(0xFF3392EA)),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20), // Change the button shape

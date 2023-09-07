@@ -6,7 +6,7 @@ import 'package:parkeaseapp/Screens/navigation.dart';
 import 'package:parkeaseapp/Screens/profile.dart';
 import 'package:parkeaseapp/Screens/search_page.dart';
 import 'package:parkeaseapp/Screens/wallet_screen.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:parkeaseapp/main.dart';
 
 class MyHomePage extends StatefulWidget {
    
@@ -49,10 +49,11 @@ class _MyHomePageState extends State<MyHomePage> {
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
     const String username = 'User';
-    bool bookings=false; // Change this value to take first name from profile.
+    bool bookings=true; // Change this value to take first name from profile.
     _checkLocationService(context);
     List<String> stringList = [];
     return Scaffold(
+      extendBodyBehindAppBar: true,
       key: _scaffoldKey,
       drawer: NavDrawer(),
       appBar: PreferredSize(
@@ -110,37 +111,40 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       
       body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10), // Left and right margins
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10),
+          color: context.isDarkMode ? Color(0xFF353535):Colors.white ,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizedBox(height: 20), // Adjust spacing as needed
+              SizedBox(height: 120), // Adjust spacing as needed
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.black, width: 1), // Add border decoration
+                  border: Border.all(color: context.isDarkMode ? Color.fromARGB(198, 237, 138, 25): Colors.black, width: 1), // Add border decoration
                 ),
-                child: Row(
-                  children: [
-                    IconButton(
-                      icon: Icon(Icons.search),
-                      onPressed: () {
-                        // Add your search functionality here
-                      },
-                    ),
-                    GestureDetector(
-                      onTap: () {
+                child: GestureDetector(
+                  onTap: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => SearchPage()));
                       },
-                      child: Container(
-                        child: Text(
-                          'Search using landmark, street, or monument.',
-                          style: TextStyle(fontWeight: FontWeight.w300,color: Colors.black),
-                          ),
+                  child: Row(
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.search),
+                        color: context.isDarkMode?Colors.white:Colors.black,
+                        onPressed: () {
+                          // Add your search functionality here
+                        },
                       ),
-                    ),
-                  ],
+                      Container(
+                          child: Text(
+                            'Search using landmark, street, or monument.',
+                            style: TextStyle(fontWeight: FontWeight.w300,color: context.isDarkMode?Colors.white:Colors.black),
+                            ),
+                        ),
+                      
+                    ],
+                  ),
                 ),
               ),
               SizedBox(height: 20), // Add spacing between search bar and categories
@@ -243,7 +247,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   BottomNavigationBarItem(
                     icon:Icon(Icons.map_outlined, color: Colors.white),
-                    label: 'Search',
+                    label: 'Navigation',
                   ),
                   BottomNavigationBarItem(
                     icon:Icon(Icons.wallet, color: Colors.white),
@@ -278,8 +282,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             Container(
-              width: 120,
-              height: 180,
+              width: 150,
+              height: 120,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
@@ -291,10 +295,10 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(height: 5),
             Center(
               child: Container(
-                width: 120,
+                width: 150,
                 height: 70,
                 alignment: Alignment.center,
-                margin:EdgeInsets.fromLTRB(5, 5, 5, 5),
+                margin:EdgeInsets.fromLTRB(5, 5, 0, 5),
                 decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10),),
                 child:Column(children: [Text('Parking Name'),
                 Text('Street Name',style: TextStyle(fontSize: 12),),
@@ -313,8 +317,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return Column(
       children: [
         Container(
-          width: 120,
-          height: 180,
+          margin: EdgeInsets.all(5),
+          width: 150,
+          height: 120,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             image: DecorationImage(
@@ -324,10 +329,16 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         SizedBox(height: 5,),
-        Container(child: Column(
+        Container(
+          margin: EdgeInsets.fromLTRB(5,0,5,5),
+          padding: EdgeInsets.all(2),
+          width: 150,
+          height: 50,
+          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10),),
+          child: Column(
           children: [
-            Row(children: [Text('Time:'),Text('TimeSlotVarHere')]),
-            Row(children: [Text('SlotID:'),Text('SlotIDVarHere')]),
+            Row(children: [Text('Time:'),Text('')]),
+            Row(children: [Text('SlotID:'),Text('')]),
           ],
         ),)]
     );
@@ -339,10 +350,10 @@ class _MyHomePageState extends State<MyHomePage> {
         Row(
           children: [
             if (categoryName == 'Favourites')
-              Icon(Icons.star),
+              Icon(Icons.star,color: context.isDarkMode?Colors.white:Colors.black,),
             Text(
               categoryName,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: context.isDarkMode?Colors.white:Colors.black),
             ),
           ],
         ),

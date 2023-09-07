@@ -5,6 +5,7 @@ import 'package:parkeaseapp/Constants/constants.dart';
 import 'package:parkeaseapp/Screens/menu_widget.dart';
 import 'package:parkeaseapp/Screens/navigation.dart';
 import 'package:parkeaseapp/Screens/profile.dart';
+import 'package:parkeaseapp/main.dart';
 class WalletScreen extends StatefulWidget {
   const WalletScreen({super.key});
 
@@ -42,6 +43,7 @@ class _WalletScreenState extends State<WalletScreen> {
     double scrWidth = Constants.screenWidth(context);
     double scrHeight = Constants.screenHeight(context);
     return Scaffold(
+      extendBodyBehindAppBar: true,
       key: scaffoldKey,
       drawer: NavDrawer(),
       appBar: PreferredSize(
@@ -98,237 +100,242 @@ class _WalletScreenState extends State<WalletScreen> {
         ),
         ),
       body: SingleChildScrollView
-      (child: Column(
-        children: [Container(
-          width: scrWidth,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+      (child: Container(
+        color: context.isDarkMode ? Color(0xFF353535): Colors.white ,
+        child: Column(
+          children: [
+            SizedBox(height: 110,),
             Container(
-                width: 160,
-                height: 250,
-                margin:EdgeInsets.all(8),
-                decoration: ShapeDecoration(
-                    color: Color(0xFF353535),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                    ),
-                ),
-                child:Column(
-                  children: [
-                    SizedBox(height:20),
-                    Row(
-                      children: [
-                        SizedBox(width: 20),
-                        Image(image: AssetImage('assets/images/card_provider.png'))
-                      ],
-                    ),
-                    Text('**** 5482',style: TextStyle(fontSize: 24,color: Colors.white,fontWeight: FontWeight.w600),),
-                    SizedBox(height:80),
-                    Text('Card Owner',style:TextStyle(color:Colors.white)),
-                    Text('User',style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.w500)),
-                    Text('04/24',style: TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.w400)),
-                  ],
-                )
-            ),
-            Container(
-                width: 170,
-                height: 250,
-                margin:EdgeInsets.fromLTRB(2, 8, 8, 8),
-                decoration: ShapeDecoration(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                    ),
-                ),
-                child:Column(children: [
-                  Container(
-                    width: 170,
-                    height: 120,
-                    margin: EdgeInsets.fromLTRB(0, 0, 0, 5),
-                    decoration: ShapeDecoration(
-                        color: Colors.white38,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                        ),
-                    ),
-                    child:Center(
-                      child:Column(
+            width: scrWidth,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+              Container(
+                  width: 160,
+                  height: 250,
+                  margin:EdgeInsets.all(8),
+                  decoration: ShapeDecoration(
+                      color:  context.isDarkMode ? Color.fromARGB(198, 237, 138, 25): Color(0xFF353535) ,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                      ),
+                  ),
+                  child:Column(
+                    children: [
+                      SizedBox(height:20),
+                      Row(
                         children: [
-                          SizedBox(height:35),
-                          Text('004.67TK',style:TextStyle(color:Colors.black,fontSize: 24,fontWeight: FontWeight.bold)),
-                          Text('Total tokens')
+                          SizedBox(width: 20),
+                          Image(image: AssetImage('assets/images/card_provider.png'))
                         ],
-                      )
-                    )
+                      ),
+                      Text('**** 5482',style: TextStyle(fontSize: 24,color: Colors.white,fontWeight: FontWeight.w600),),
+                      SizedBox(height:80),
+                      Text('Card Owner',style:TextStyle(color:Colors.white)),
+                      Text('User',style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.w500)),
+                      Text('04/24',style: TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.w400)),
+                    ],
+                  )
+              ),
+              Container(
+                  width: 170,
+                  height: 250,
+                  margin:EdgeInsets.fromLTRB(2, 8, 8, 8),
+                  decoration: ShapeDecoration(
+                      color: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                      ),
                   ),
-                  Container(
-                    width: 170,
-                    height: 120,
-                    margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                    decoration: ShapeDecoration(
-                        color: Color(0xFF353535),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                              ),
+                  child:Column(children: [
+                    Container(
+                      width: 170,
+                      height: 120,
+                      margin: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                      decoration: ShapeDecoration(
+                          color: context.isDarkMode ? Colors.white70: Colors.white38,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
                           ),
-                        child:Center(
-                          child:Column(
-                            children: [
-                              SizedBox(height:35),
-                              Text('99.99 INR',style:TextStyle(color:Colors.white,fontSize: 24,fontWeight: FontWeight.bold)),
-                              Text('Total balance',style: TextStyle(color: Colors.white),)
-                            ],
-                          )
+                      ),
+                      child:Center(
+                        child:Column(
+                          children: [
+                            SizedBox(height:35),
+                            Text('004.67TK',style:TextStyle(color:Colors.black,fontSize: 24,fontWeight: FontWeight.bold)),
+                            Text('Total tokens')
+                          ],
                         )
-                        ),
-                      ]),
-                      
+                      )
                     ),
-              
-                    ],),
-                  ),
-                  MyClickableContainer(
-                    text: 'Google Pay',
-                    customIconAsset: 'assets/images/google-fill.svg',
-                    onTap: () {
-                      // Navigate to a different screen when container is tapped
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MyHomePage()),
-                      );
-                    },
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  MyClickableContainer(
-                    text: 'Credit/Debit Card',
-                    customIconAsset: 'assets/images/card.svg',
-                    onTap: () {
-                      // Navigate to a different screen when container is tapped
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MyHomePage()),
-                      );
-                    },
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  MyClickableContainer(
-                    text: 'UPI',
-                    customIconAsset: 'assets/images/rupee.svg',
-                    onTap: () {
-                      // Navigate to a different screen when container is tapped
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MyHomePage()),
-                      );
-                    },
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  CustomizedClickableContainer.asset(
-                      text: 'Transaction History',
-                      customIconAsset: 'assets/images/history.svg',
-                      onTap: () {
-                        // Action for tapping container
-                      },
-                      customContainerColor: Colors.white24,    // Custom container color
-                      customContainerHeight: scrHeight/(800/60),        // Custom container height
+                    Container(
+                      width: 170,
+                      height: 120,
+                      margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                      decoration: ShapeDecoration(
+                          color: context.isDarkMode ? Color.fromARGB(198, 237, 138, 25): Color(0xFF353535),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                                ),
+                            ),
+                          child:Center(
+                            child:Column(
+                              children: [
+                                SizedBox(height:35),
+                                Text('99.99 INR',style:TextStyle(color:Colors.white,fontSize: 24,fontWeight: FontWeight.bold)),
+                                Text('Total balance',style: TextStyle(color: Colors.white),)
+                              ],
+                            )
+                          )
+                          ),
+                        ]),
+                        
+                      ),
+                
+                      ],),
                     ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  CustomizedClickableContainer.asset(
-                      text: 'Recharge Tokens',
-                      customIconAsset: 'assets/images/tokens.svg',
+                    MyClickableContainer(
+                      text: 'Google Pay',
+                      customIconAsset: 'assets/images/google-fill.svg',
                       onTap: () {
-                        // Action for tapping container
+                        // Navigate to a different screen when container is tapped
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MyHomePage()),
+                        );
                       },
-                      customContainerColor: Colors.white24,    // Custom container color
-                      customContainerHeight: scrHeight/(800/60),        // Custom container height
-                    ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  CustomizedClickableContainer.asset(
-                      text: 'Referrals',
-                      customIconAsset: 'assets/images/referrals.svg',
-                      onTap: () {
-                        // Action for tapping container
-                      },
-                      customContainerColor: Colors.white24,    // Custom container color
-                      customContainerHeight: scrHeight/(800/60),        // Custom container height
-                    ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  CustomizedClickableContainer.asset(
-                      text: 'Rewards and Offers',
-                      customIconAsset: 'assets/images/rewards.svg',
-                      onTap: () {
-                        // Action for tapping container
-                      },
-                      customContainerColor: Colors.white24,    // Custom container color
-                      customContainerHeight: scrHeight/(800/60),        // Custom container height
-                    ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  CustomizedClickableContainer.asset(
-                      text: 'Legal',
-                      customIconAsset: 'assets/images/history.svg',
-                      onTap: () {
-                        // Action for tapping container
-                      },
-                      customContainerColor: Colors.white24,    // Custom container color
-                      customContainerHeight: scrHeight/(800/60),        // Custom container height
                     ),
                     SizedBox(
-                    height: 10,
-                  ),
-
-    ])),
+                      height: 10,
+                    ),
+                    MyClickableContainer(
+                      text: 'Credit/Debit Card',
+                      customIconAsset: 'assets/images/card.svg',
+                      onTap: () {
+                        // Navigate to a different screen when container is tapped
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MyHomePage()),
+                        );
+                      },
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    MyClickableContainer(
+                      text: 'UPI',
+                      customIconAsset: 'assets/images/rupee.svg',
+                      onTap: () {
+                        // Navigate to a different screen when container is tapped
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => MyHomePage()),
+                        );
+                      },
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    CustomizedClickableContainer.asset(
+                        text: 'Transaction History',
+                        customIconAsset: 'assets/images/history.svg',
+                        onTap: () {
+                          // Action for tapping container
+                        },
+                        customContainerColor: Colors.white24,    // Custom container color
+                        customContainerHeight: scrHeight/(800/60),        // Custom container height
+                      ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    CustomizedClickableContainer.asset(
+                        text: 'Recharge Tokens',
+                        customIconAsset: 'assets/images/tokens.svg',
+                        onTap: () {
+                          // Action for tapping container
+                        },
+                        customContainerColor: Colors.white24,    // Custom container color
+                        customContainerHeight: scrHeight/(800/60),        // Custom container height
+                      ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    CustomizedClickableContainer.asset(
+                        text: 'Referrals',
+                        customIconAsset: 'assets/images/referrals.svg',
+                        onTap: () {
+                          // Action for tapping container
+                        },
+                        customContainerColor: Colors.white24,    // Custom container color
+                        customContainerHeight: scrHeight/(800/60),        // Custom container height
+                      ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    CustomizedClickableContainer.asset(
+                        text: 'Rewards and Offers',
+                        customIconAsset: 'assets/images/rewards.svg',
+                        onTap: () {
+                          // Action for tapping container
+                        },
+                        customContainerColor: Colors.white24,    // Custom container color
+                        customContainerHeight: scrHeight/(800/60),        // Custom container height
+                      ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    CustomizedClickableContainer.asset(
+                        text: 'Legal',
+                        customIconAsset: 'assets/images/history.svg',
+                        onTap: () {
+                          // Action for tapping container
+                        },
+                        customContainerColor: Colors.white24,    // Custom container color
+                        customContainerHeight: scrHeight/(800/60),        // Custom container height
+                      ),
+                      SizedBox(
+                      height: 10,
+                    ),
+      
+          ]),
+      )),
         
       
       bottomNavigationBar: Container(
-  decoration: const BoxDecoration(
-    color: Colors.black,
-    borderRadius: BorderRadius.only(
-      topLeft: Radius.circular(20),
-      topRight: Radius.circular(20),
-    ),
-  ),
-  child: BottomNavigationBar(
-    type: BottomNavigationBarType.fixed,
-    backgroundColor: Colors.black,
-    items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home, color: Colors.white),
-              label: 'Home',
-              
+          decoration: const BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
             ),
-            BottomNavigationBarItem(
-              icon:Icon(Icons.map_outlined, color: Colors.white),
-              label: 'Search',
-            ),
-            BottomNavigationBarItem(
-              icon:Icon(Icons.wallet, color: Colors.white),
-              label: 'Wallet',
-            ),
-            BottomNavigationBarItem(
-              icon:Icon(Icons.account_circle_outlined, color: Colors.white),
-              label: 'Account',
-            ),
-          ],
-    currentIndex: _selectedIndex,
-    selectedItemColor: Colors.white,
-    unselectedItemColor: Colors.white,
-    onTap: _onItemTapped,
-  ),)
+          ),
+          child: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Colors.black,
+            items: const [
+                    BottomNavigationBarItem(
+                      icon: Icon(Icons.home, color: Colors.white),
+                      label: 'Home',
+                      
+                    ),
+                    BottomNavigationBarItem(
+                      icon:Icon(Icons.map_outlined, color: Colors.white),
+                      label: 'Navigation',
+                    ),
+                    BottomNavigationBarItem(
+                      icon:Icon(Icons.wallet, color: Colors.white),
+                      label: 'Wallet',
+                    ),
+                    BottomNavigationBarItem(
+                      icon:Icon(Icons.account_circle_outlined, color: Colors.white),
+                      label: 'Account',
+                    ),
+                  ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white,
+            onTap: _onItemTapped,
+          ),)
         );
   }
 }

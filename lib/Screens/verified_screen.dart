@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:parkeaseapp/Screens/home_page_2.dart';
+import 'package:parkeaseapp/main.dart';
 
 class Verified extends StatelessWidget {
   const Verified({super.key});
@@ -16,7 +16,7 @@ class Verified extends StatelessWidget {
               width: scrWidth - 20,
               height: scrHeight - 40,
               decoration: ShapeDecoration(
-                  color: Color(0xFF3392EA),
+                  color: context.isDarkMode?Color(0xFF353535):Color(0xFF3392EA),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                   ),

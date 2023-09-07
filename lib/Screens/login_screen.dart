@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
-import 'package:parkeaseapp/Screens/home_page_2.dart';
 import 'package:parkeaseapp/Screens/register.dart';
 import 'package:parkeaseapp/Screens/verification_screen.dart';
+import 'package:parkeaseapp/main.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -24,7 +24,7 @@ class LoginScreen extends StatelessWidget {
           height: scrHeight-400,
           width: scrWidth-20,
           margin:EdgeInsets.fromLTRB(9, 0.625*scrHeight, 9, 38),
-          decoration: BoxDecoration(color: Colors.blueAccent,borderRadius: BorderRadius.circular(30)),
+          decoration: BoxDecoration(color: context.isDarkMode?Color(0xFF353535):Color(0xFF3392EA),borderRadius: BorderRadius.circular(30)),
           child: Column(children: [
             Image.asset('assets/images/logo.png',height: 90,width: 200,alignment: Alignment(1.0,1.0),),
             Text('Welcome to ParkEase.\nGet Started by creating a new account or log in.',style: TextStyle(color:Colors.white,fontFamily: 'Inter',fontWeight: FontWeight.w400)),

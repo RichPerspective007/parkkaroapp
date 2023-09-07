@@ -4,6 +4,8 @@ import 'package:parkeaseapp/Constants/constants.dart';
 import 'package:parkeaseapp/Screens/verified_screen.dart';
 import 'dart:async';
 
+import 'package:parkeaseapp/main.dart';
+
 class PendingVerification extends StatefulWidget {
   const PendingVerification({super.key});
 
@@ -65,7 +67,7 @@ class _PendingVerificationState extends State<PendingVerification> {
                 width: scrWidth-20,
                 height: 400,
                 decoration: ShapeDecoration(
-                    color: Color(0xFF3392EA),
+                    color: context.isDarkMode?Color(0xFF353535):Color(0xFF3392EA),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                     ),
@@ -167,7 +169,7 @@ class _PendingVerificationState extends State<PendingVerification> {
                 width: scrWidth-20,
                 height: 75,
                 decoration: ShapeDecoration(
-                    color: Color(0xFF3392EA),
+                    color: context.isDarkMode?Color(0xFF353535):Color(0xFF3392EA),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                     ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:parkeaseapp/Constants/clickable_container.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
+import 'package:parkeaseapp/main.dart';
 class Settings extends StatelessWidget {
   const Settings({super.key});
 
@@ -8,6 +9,7 @@ class Settings extends StatelessWidget {
   Widget build(BuildContext context) {
     double scrHeight = Constants.screenHeight(context);
     return Scaffold(
+      extendBodyBehindAppBar:true,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60), // Specify the desired height
         child: Container(
@@ -49,9 +51,11 @@ class Settings extends StatelessWidget {
       
       body: SingleChildScrollView(
         child: Container(
-          margin:EdgeInsets.all(15),
+          padding: EdgeInsets.all(15),
+          color: context.isDarkMode?Color(0xFF353535):Colors.white,
           child: Column(
             children: [
+              const SizedBox(height: 75,),
               CustomizedClickableContainer.icon(
                 text: 'Languages',
                 customIconData: Icons.language,
@@ -201,18 +205,6 @@ class Settings extends StatelessWidget {
               ),
               SizedBox(
                 height: 12,
-              ),
-              CustomizedClickableContainer.icon(
-                text: 'Log Out',
-                customIconData: Icons.logout,
-                onTap: () {
-                   Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Settings()),
-                    );// Action for tapping container
-                },
-                customContainerColor: Colors.white24,    // Custom container color
-                customContainerHeight: scrHeight/(800/60),        // Custom container height
               ),
             ],),
         ),

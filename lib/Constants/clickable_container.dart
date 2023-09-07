@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:parkeaseapp/main.dart';
 
 class MyClickableContainer extends StatelessWidget {
   final String text;
@@ -146,12 +147,12 @@ class CustomizedClickableContainer extends MyClickableContainer {
         width: customContainerWidth ?? scrWidth - 30,
         height: customContainerHeight,
         decoration: BoxDecoration(
-          border: customBorder ?? Border.all(color: Colors.black, width: 2.0),
+          border: customBorder ?? Border.all(color: context.isDarkMode ? Color.fromARGB(198, 237, 138, 25): Colors.black, width: 2.0),
           borderRadius: BorderRadius.circular(26), // Adding black border
         ),
         child: Container(
           decoration: ShapeDecoration(
-            color: customContainerColor,
+            color: context.isDarkMode ? Color(0xFF353535): customContainerColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(24),
             ),
@@ -164,14 +165,14 @@ class CustomizedClickableContainer extends MyClickableContainer {
               if (customIcon is String)
                 SvgPicture.asset(
                   customIcon,
-                  color: Colors.black,
+                  color: context.isDarkMode ? Color.fromARGB(198, 237, 138, 25): Colors.black,
                   width: 24,
                   height: 24,
                 ),
               if (customIcon is IconData)
                 Icon(
                   customIcon,
-                  color: Colors.black,
+                  color: context.isDarkMode ? Color.fromARGB(198, 237, 138, 25): Colors.black,
                   size: 24,
                 ),
 
@@ -179,7 +180,7 @@ class CustomizedClickableContainer extends MyClickableContainer {
               Text(
                 text,
                 style: TextStyle(
-                  color: Color(0xFF505050),
+                  color: context.isDarkMode ? Colors.white: Color(0xFF505050),
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -191,5 +192,3 @@ class CustomizedClickableContainer extends MyClickableContainer {
     );
   }
 }
-
-

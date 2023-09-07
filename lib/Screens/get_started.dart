@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:parkeaseapp/Screens/home_page_2.dart';
 import 'package:parkeaseapp/Screens/login_screen.dart';
 
 class GetStarted extends StatelessWidget {

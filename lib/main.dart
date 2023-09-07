@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:parkeaseapp/Screens/verification_screen.dart';
 import 'Screens/get_started.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:flutter/services.dart';
 
 
 void main() async {
@@ -9,7 +9,7 @@ void main() async {
   
   // Request location permission on first startup
   PermissionStatus status = await Permission.location.request();
-  
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const MyApp());
 }
 
@@ -34,5 +34,12 @@ class MyApp extends StatelessWidget {
       ),
       home: GetStarted(),
     );
+  }
+}
+extension DarkMode on BuildContext {
+  /// is dark mode currently enabled?
+  bool get isDarkMode {
+    final brightness = MediaQuery.of(this).platformBrightness;
+    return brightness == Brightness.dark;
   }
 }
