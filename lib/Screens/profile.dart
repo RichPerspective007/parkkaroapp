@@ -61,7 +61,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       width: 350,
                       height: scrHeight/2,
                       decoration: ShapeDecoration(
-                          color: Color(0xFF3392EA),
+                          color: Color(0xFFFFA41B),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(40),
                           ),

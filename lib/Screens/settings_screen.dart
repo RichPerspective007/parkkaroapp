@@ -11,7 +11,7 @@ class Settings extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar:true,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60), // Specify the desired height
+        preferredSize: Size.fromHeight(80), // Specify the desired height
         child: Container(
           margin: EdgeInsets.all(8), // Add margins
           decoration: BoxDecoration(
@@ -92,7 +92,7 @@ class Settings extends StatelessWidget {
                 onTap: () {
                    /*Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Settings()),
+                      MaterialPageRoute(builder: (context) => ThemeSelection()),
                     );*/// Action for tapping container
                 },
                 customContainerColor: Colors.white24,    // Custom container color

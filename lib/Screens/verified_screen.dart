@@ -16,7 +16,7 @@ class Verified extends StatelessWidget {
               width: scrWidth - 20,
               height: scrHeight - 40,
               decoration: ShapeDecoration(
-                  color: context.isDarkMode?Color(0xFF353535):Color(0xFF3392EA),
+                  color: context.isDarkMode?Color(0xFF353535):Color(0xFFFFA41B),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                   ),

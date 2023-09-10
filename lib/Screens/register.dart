@@ -47,12 +47,12 @@ class _RegisterViewState extends State<RegisterView> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60), // Specify the desired height
+        preferredSize: Size.fromHeight(80), // Specify the desired height
         child: Container(
           margin: EdgeInsets.all(8), // Add margins
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20), // Add border radius
-            color: Colors.blue,
+            color: Color(0xFFFFA41B),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -89,63 +89,77 @@ class _RegisterViewState extends State<RegisterView> {
                 SizedBox(height: 85,),
                 Container(
                     margin:EdgeInsets.all(10),
+                    padding: EdgeInsets.only(left: 15),
                     decoration: BoxDecoration(
                       color:context.isDarkMode?Color(0xFF353535): Colors.white,
                       border: Border.all(color:context.isDarkMode ? Color.fromARGB(198, 237, 138, 25): Colors.black,style: BorderStyle.solid, width:2.0),
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: TextField(
+                      style: TextStyle(color: Colors.white54),
                       controller: _name,
                       enableSuggestions: false,
                       autocorrect: false,
                       keyboardType: TextInputType.name,
                       decoration: const InputDecoration(
-                        hintText: '   Enter your name',
+                        hintText: 'Enter your name',
+                        hintStyle: TextStyle(fontSize: 15.0,),
+                        border: InputBorder.none,
                       ),
                     ),
                   ),
                 Container(
                     margin:EdgeInsets.all(10),
+                    padding: EdgeInsets.only(left: 15),
                     decoration: BoxDecoration(
                       color:context.isDarkMode?Color(0xFF353535): Colors.white,
                       border: Border.all(color:context.isDarkMode ? Color.fromARGB(198, 237, 138, 25): Colors.black,style: BorderStyle.solid, width:2.0),
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: TextField(
+                      style: TextStyle(color: Colors.white54),
                       controller: _email,
                       enableSuggestions: false,
                       autocorrect: false,
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
-                        hintText: '   Enter your email.',
+                        hintText: 'Enter your email.',
+                        hintStyle: TextStyle(fontSize: 15.0, color: Colors.white),
+                        border: InputBorder.none,
                       ),
                     ),
                   ),
                 Container(
                     margin:EdgeInsets.all(10),
+                    padding: EdgeInsets.only(left: 15),
                     decoration: BoxDecoration(
                       color:context.isDarkMode?Color(0xFF353535): Colors.white,
                       border: Border.all(color:context.isDarkMode ? Color.fromARGB(198, 237, 138, 25): Colors.black,style: BorderStyle.solid, width:2.0),
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: TextField(
+                      style: TextStyle(color: Colors.white54),
                       controller: _password,
                       enableSuggestions: false,
                       autocorrect: false,
                       obscureText: true,
                       decoration: const InputDecoration(
-                        hintText: '   Set a password.',
+                        hintText: 'Set a password.',
+                        hintStyle: TextStyle(fontSize: 15.0, color: Colors.white),
+                        border: InputBorder.none,
                       ),
                     ),
                   ),
                 Container(
                     margin:EdgeInsets.all(10),
+                    padding: EdgeInsets.only(left: 15),
                     decoration: BoxDecoration(
                       color:context.isDarkMode?Color(0xFF353535): Colors.white,
                       border: Border.all(color:context.isDarkMode ? Color.fromARGB(198, 237, 138, 25): Colors.black,style: BorderStyle.solid, width:2.0),
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: TextField(
+                      style: TextStyle(color: Colors.white54),
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(12),],
                       controller: _aadhar,
@@ -153,75 +167,93 @@ class _RegisterViewState extends State<RegisterView> {
                       autocorrect: false,
                       keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
-                        hintText: '   Enter your Aadhar number.',
+                        hintText: 'Enter your Aadhar number.',
+                        hintStyle: TextStyle(fontSize: 15.0, color: Colors.white),
+                        border: InputBorder.none,
                       ),
                     ),
                   ),
                 Container(
                     margin:EdgeInsets.all(10),
+                    padding: EdgeInsets.only(left: 15),
                     decoration: BoxDecoration(
                       color:context.isDarkMode?Color(0xFF353535): Colors.white,
                       border: Border.all(color:context.isDarkMode ? Color.fromARGB(198, 237, 138, 25): Colors.black,style: BorderStyle.solid, width:2.0),
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: TextField(
+                      style: TextStyle(color: Colors.white54),
                       controller: _dob,
                       enableSuggestions: false,
                       autocorrect: false,
                       keyboardType: TextInputType.datetime,
                       decoration: const InputDecoration(
-                        hintText: '   Enter your date of birth.',
+                        hintText: 'Enter your date of birth.',
+                        hintStyle: TextStyle(fontSize: 15.0, color: Colors.white),
+                        border: InputBorder.none,
                       ),
                     ),
                   ),
                 Container(
                     margin:EdgeInsets.all(10),
+                    padding: EdgeInsets.only(left: 15),
                     decoration: BoxDecoration(
                       color:context.isDarkMode?Color(0xFF353535): Colors.white,
                       border: Border.all(color:context.isDarkMode ? Color.fromARGB(198, 237, 138, 25): Colors.black,style: BorderStyle.solid, width:2.0),
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: TextField(
+                      style: TextStyle(color: Colors.white54),
                       controller: _model,
                       enableSuggestions: false,
                       autocorrect: false,
                       keyboardType: TextInputType.name,
                       decoration: const InputDecoration(
-                        hintText: '   Your Car model.',
+                        hintText: 'Your Car model.',
+                        hintStyle: TextStyle(fontSize: 15.0, color: Colors.white),
+                        border: InputBorder.none,
                       ),
                     ),
                   ),
                 Container(
                     margin:EdgeInsets.all(10),
+                    padding: EdgeInsets.only(left: 15),
                     decoration: BoxDecoration(
                       color:context.isDarkMode?Color(0xFF353535): Colors.white,
                       border: Border.all(color:context.isDarkMode ? Color.fromARGB(198, 237, 138, 25): Colors.black,style: BorderStyle.solid, width:2.0),
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: TextField(
+                      style: TextStyle(color: Colors.white54),
                       controller: _numId,
                       enableSuggestions: false,
                       autocorrect: false,
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
-                        hintText: '   Your Car number ID.',
+                        hintText: 'Your Car number ID.',
+                        hintStyle: TextStyle(fontSize: 15.0, color: Colors.white),
+                        border: InputBorder.none,
                       ),
                     ),
                   ),
                 Container(
                     margin:EdgeInsets.all(10),
+                    padding: EdgeInsets.only(left: 15),
                     decoration: BoxDecoration(
                       color:context.isDarkMode?Color(0xFF353535): Colors.white,
                       border: Border.all(color:context.isDarkMode ? Color.fromARGB(198, 237, 138, 25): Colors.black,style: BorderStyle.solid, width:2.0),
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: TextField(
+                      style: TextStyle(color: Colors.white54),
                       controller: _license,
                       enableSuggestions: false,
                       autocorrect: false,
                       keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
-                        hintText: '   Your license number.',
+                        hintText: 'Your license number.',
+                        hintStyle: TextStyle(fontSize: 15.0, color: Colors.white),
+                        border: InputBorder.none,
                       ),
                     ),
                   ),

@@ -75,12 +75,12 @@ class _NavigationScreenState extends State<NavigationScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60), // Specify the desired height
+        preferredSize: Size.fromHeight(80), // Specify the desired height
         child: Container(
           margin: EdgeInsets.all(8), // Add margins
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20), // Add border radius
-            color: Colors.blue,
+            color: Color(0xFFFFA41B),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:parkeaseapp/Constants/constants.dart';
 import 'package:parkeaseapp/Screens/bookpay.dart';
 import 'package:parkeaseapp/Screens/menu_widget.dart';
 import 'package:parkeaseapp/Screens/navigation.dart';
@@ -47,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
+    print(Constants.screenHeight);
     const String username = 'User';
     bool bookings=true; // Change this value to take first name from profile.
     _checkLocationService(context);
@@ -57,12 +58,12 @@ class _MyHomePageState extends State<MyHomePage> {
       key: _scaffoldKey,
       drawer: NavDrawer(),
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(90), // Specify the desired height
+        preferredSize: Size.fromHeight(120), // Specify the desired height
         child: Container(
           margin: EdgeInsets.all(8), // Add margins
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20), // Add border radius
-            color: Colors.blue,
+            color: Color(0xFFFFA41B),
           ),
           child: Column(
             children: [
@@ -111,13 +112,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       
       body: SingleChildScrollView(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 10),
           color: context.isDarkMode ? Color(0xFF353535):Colors.white ,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              SizedBox(height: 120), // Adjust spacing as needed
+              SizedBox(height: 130), // Adjust spacing as needed
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
@@ -298,7 +300,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 150,
                 height: 70,
                 alignment: Alignment.center,
-                margin:EdgeInsets.fromLTRB(5, 5, 0, 5),
+                margin:const EdgeInsets.fromLTRB(5, 5, 0, 5),
                 decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10),),
                 child:Column(children: [Text('Parking Name'),
                 Text('Street Name',style: TextStyle(fontSize: 12),),

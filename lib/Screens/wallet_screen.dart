@@ -47,12 +47,12 @@ class _WalletScreenState extends State<WalletScreen> {
       key: scaffoldKey,
       drawer: NavDrawer(),
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(90), // Specify the desired height
+        preferredSize: const Size.fromHeight(110), // Specify the desired height
         child: Container(
           margin: const EdgeInsets.all(8), // Add margins
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20), // Add border radius
-            color: Colors.blue,
+            color: Color(0xFFFFA41B),
           ),
           child: Column(
             children: [
@@ -199,10 +199,10 @@ class _WalletScreenState extends State<WalletScreen> {
                       customIconAsset: 'assets/images/google-fill.svg',
                       onTap: () {
                         // Navigate to a different screen when container is tapped
-                        Navigator.push(
+                        /*Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => MyHomePage()),
-                        );
+                        );*/
                       },
                     ),
                     SizedBox(
@@ -213,10 +213,10 @@ class _WalletScreenState extends State<WalletScreen> {
                       customIconAsset: 'assets/images/card.svg',
                       onTap: () {
                         // Navigate to a different screen when container is tapped
-                        Navigator.push(
+                        /*Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => MyHomePage()),
-                        );
+                        );*/
                       },
                     ),
                     SizedBox(
@@ -227,10 +227,10 @@ class _WalletScreenState extends State<WalletScreen> {
                       customIconAsset: 'assets/images/rupee.svg',
                       onTap: () {
                         // Navigate to a different screen when container is tapped
-                        Navigator.push(
+                        /*Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => MyHomePage()),
-                        );
+                        );*/
                       },
                     ),
                     SizedBox(
