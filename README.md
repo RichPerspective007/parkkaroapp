@@ -1,6 +1,6 @@
 
 
-# ParkEase-An innovation to solve the parking problem in India©
+# Park.Karo-An innovation to solve the parking problem in India©
 
 [![Generic badge](https://img.shields.io/badge/License-MIT-green.svg)](https://shields.io/)
 [![Generic badge](https://img.shields.io/badge/Completed-NO-red.svg)](https://shields.io/)
@@ -112,7 +112,7 @@ These technologies, when used together, form a powerful stack for developing mod
 
 ## License📌
 
-The ParkEase application is distributed under the [MIT License](LICENSE), which means you're free to use, modify, and distribute the code as per the terms of the license.
+The Park.Karo application is distributed under the [MIT License](LICENSE), which means you're free to use, modify, and distribute the code as per the terms of the license.
 
 For detailed usage instructions and guides, please refer to the [User Guide](user_guide.md) and [Admin Guide](admin_guide.md) provided in the repository.
 
