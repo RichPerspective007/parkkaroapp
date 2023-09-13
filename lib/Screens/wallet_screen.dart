@@ -15,12 +15,9 @@ class WalletScreen extends StatefulWidget {
 
 class _WalletScreenState extends State<WalletScreen> {
   static const String username = 'User';
-  int _selectedIndex = 0; // Initialize with the default selected index
+  int currentPageIndex = 2; // Initialize with the default selected index
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-  });
   switch (index) {
     case 0:
       Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage()));
@@ -115,7 +112,7 @@ class _WalletScreenState extends State<WalletScreen> {
                   height: 250,
                   margin:EdgeInsets.all(8),
                   decoration: ShapeDecoration(
-                      color:  context.isDarkMode ? Color.fromARGB(198, 237, 138, 25): Color(0xFF353535) ,
+                      color:  context.isDarkMode ? Color(0xFF00BABA): Color(0xFF353535) ,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                       ),
@@ -173,7 +170,7 @@ class _WalletScreenState extends State<WalletScreen> {
                       height: 120,
                       margin: EdgeInsets.fromLTRB(0, 5, 0, 0),
                       decoration: ShapeDecoration(
-                          color: context.isDarkMode ? Color.fromARGB(198, 237, 138, 25): Color(0xFF353535),
+                          color: context.isDarkMode ? Color(0xFF00BABA): Color(0xFF353535),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                                 ),
@@ -301,41 +298,43 @@ class _WalletScreenState extends State<WalletScreen> {
       )),
         
       
-      bottomNavigationBar: Container(
-          decoration: const BoxDecoration(
-            color: Colors.black,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
-            ),
-          ),
-          child: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.black,
-            items: const [
-                    BottomNavigationBarItem(
-                      icon: Icon(Icons.home, color: Colors.white),
-                      label: 'Home',
-                      
-                    ),
-                    BottomNavigationBarItem(
-                      icon:Icon(Icons.map_outlined, color: Colors.white),
-                      label: 'Navigation',
-                    ),
-                    BottomNavigationBarItem(
-                      icon:Icon(Icons.wallet, color: Colors.white),
-                      label: 'Wallet',
-                    ),
-                    BottomNavigationBarItem(
-                      icon:Icon(Icons.account_circle_outlined, color: Colors.white),
-                      label: 'Account',
-                    ),
-                  ],
-            currentIndex: _selectedIndex,
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.white,
-            onTap: _onItemTapped,
-          ),)
+      bottomNavigationBar: NavigationBar(
+            onDestinationSelected: (int index) {
+            setState(() {
+              currentPageIndex = index;
+              _onItemTapped(currentPageIndex);
+            });
+          },
+          height: 60,
+          labelBehavior:NavigationDestinationLabelBehavior.alwaysHide,
+          animationDuration: Duration(milliseconds: 1000),
+          indicatorColor: Color(0xFFD9D9D9),
+          backgroundColor: Color(0xFF00B400),
+          selectedIndex: currentPageIndex,
+          destinations: const [
+                  NavigationDestination(
+                    icon: Icon(Icons.home, color: Colors.white,),
+                    selectedIcon: Icon(Icons.home, color: Color(0xFF00B400),size:34),
+                    label: 'Home',
+                    
+                  ),
+                  NavigationDestination(
+                    icon:Icon(Icons.map_outlined, color: Colors.white),
+                    selectedIcon: Icon(Icons.map,color: Color(0xFF00B400),size: 34,),
+                    label: 'Navigation',
+                  ),
+                  NavigationDestination(
+                    icon:Icon(Icons.wallet, color: Colors.white),
+                    selectedIcon: Icon(Icons.wallet, color: Color(0xFF00B400),size:34),
+                    label: 'Wallet',
+                  ),
+                  NavigationDestination(
+                    icon:Icon(Icons.account_circle_outlined, color: Colors.white),
+                    selectedIcon: Icon(Icons.account_circle,color: Color(0xFF00B400),size:34),
+                    label: 'Account',
+                  ),
+                ],
+        ),
         );
   }
 }

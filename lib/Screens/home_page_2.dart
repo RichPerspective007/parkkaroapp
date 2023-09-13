@@ -16,12 +16,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _selectedIndex = 0; // Initialize with the default selected index
+  int currentPageIndex = 0; // Initialize with the default selected index
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-  });
   switch (index) {
     case 0:
       break;
@@ -230,44 +227,44 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          color: Colors.black,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
-        ),
-        child: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.black,
-          items: const [
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.home, color: Colors.white),
+      bottomNavigationBar: NavigationBar(
+            onDestinationSelected: (int index) {
+            setState(() {
+              currentPageIndex = index;
+              _onItemTapped(currentPageIndex);
+            });
+          },
+          height: 60,
+          labelBehavior:NavigationDestinationLabelBehavior.alwaysHide,
+          animationDuration: Duration(milliseconds: 1000),
+          indicatorColor: Color(0xFFD9D9D9),
+          backgroundColor: Color(0xFF00B400),
+          selectedIndex: currentPageIndex,
+          destinations: const [
+                  NavigationDestination(
+                    icon: Icon(Icons.home, color: Colors.white,),
+                    selectedIcon: Icon(Icons.home, color: Color(0xFF00B400),size:34),
                     label: 'Home',
                     
                   ),
-                  BottomNavigationBarItem(
+                  NavigationDestination(
                     icon:Icon(Icons.map_outlined, color: Colors.white),
+                    selectedIcon: Icon(Icons.map,color: Color(0xFF00B400),size: 34,),
                     label: 'Navigation',
                   ),
-                  BottomNavigationBarItem(
+                  NavigationDestination(
                     icon:Icon(Icons.wallet, color: Colors.white),
+                    selectedIcon: Icon(Icons.wallet, color: Color(0xFF00B400),size:34),
                     label: 'Wallet',
                   ),
-                  BottomNavigationBarItem(
+                  NavigationDestination(
                     icon:Icon(Icons.account_circle_outlined, color: Colors.white),
+                    selectedIcon: Icon(Icons.account_circle,color: Color(0xFF00B400),size:34),
                     label: 'Account',
                   ),
                 ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white,
-          onTap: _onItemTapped,
         ),
-      )
-
-, // Padding widget ends here
+      // Padding widget ends here
     ); // Scaffold widget ends here
   }
 

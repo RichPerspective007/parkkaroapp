@@ -57,7 +57,7 @@ class _PayAndBookState extends State<PayAndBook> {
               height:scrHeight*5.5/8,
               width:scrWidth-15,
               margin: EdgeInsets.only(left:7,right:7),
-              decoration: BoxDecoration(color: context.isDarkMode?Color(0xFF353535):Color(0xFF3392EA),borderRadius: BorderRadius.circular(30)),
+              decoration: BoxDecoration(color: Color(0xFFFFA41B),borderRadius: BorderRadius.circular(30)),
               child:Column(
                 children: [
                 SizedBox(height:30),
@@ -102,13 +102,13 @@ class _PayAndBookState extends State<PayAndBook> {
                     ],
                   ),
                 ),
-                Text('Rate: $rate per hour',style:TextStyle(fontSize: 20,color: Colors.white)),
+                Text('Rate: $rate per hour',style:TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.w600)),
                 SizedBox(height: 5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     IconButton(
-                      icon: Icon(Icons.remove),
+                      icon: Icon(Icons.remove,color:Colors.black),
                       onPressed: decrementQuantity,
                       iconSize: 24,
                       color: Colors.white,
@@ -118,7 +118,7 @@ class _PayAndBookState extends State<PayAndBook> {
                       style: const TextStyle(fontSize: 16,color: Colors.white),
                     ),
                     IconButton(
-                      icon: Icon(Icons.add),
+                      icon: Icon(Icons.add,color:Colors.black),
                       onPressed: incrementQuantity,
                       iconSize: 24,
                       color: Colors.white,
@@ -131,11 +131,18 @@ class _PayAndBookState extends State<PayAndBook> {
               height:scrHeight*2/8,
               width:scrWidth-15,
               margin: EdgeInsets.only(left:7,right:7),
-              decoration: BoxDecoration(color: context.isDarkMode?Color(0xFF353535):Color(0xFF3392EA),borderRadius: BorderRadius.circular(30)),
+              decoration: BoxDecoration(gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color(0xFFFF671F),
+                  Color(0xFF14B265)
+                ]
+              ),borderRadius: BorderRadius.circular(30)),
               child: Center(
                 child:Column(children: [
                   SizedBox(height:30),
-                  Text('Pay  $totalPrice INR',style: const TextStyle(fontSize: 30,color: Colors.white,fontWeight: FontWeight.w700),),
+                  Text('Pay  $totalPrice INR',style: const TextStyle(fontSize: 30,color: Color(0xFF06038D),fontWeight: FontWeight.w700),),
                   SizedBox(height:10),
                   Container(
                     height:50,

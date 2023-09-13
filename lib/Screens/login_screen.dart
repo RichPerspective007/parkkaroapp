@@ -24,10 +24,18 @@ class LoginScreen extends StatelessWidget {
           height: scrHeight-400,
           width: scrWidth-20,
           margin:EdgeInsets.fromLTRB(9, 0.625*scrHeight, 9, 38),
-          decoration: BoxDecoration(color: context.isDarkMode?Color(0xFF353535):Color(0xFFFFA41B),borderRadius: BorderRadius.circular(30)),
+          decoration: BoxDecoration(gradient: LinearGradient(
+            begin:Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color(0xFFFF671F),
+              Color(0xFF14B265)
+            ]
+          ),
+          borderRadius: BorderRadius.circular(30)),
           child: Column(children: [
-            Image.asset('assets/images/logo.png',height: 90,width: 200,alignment: Alignment(1.0,1.0),),
-            Text('Welcome to ParkEase.\nGet Started by creating a new account or log in.',style: TextStyle(color:Colors.white,fontFamily: 'Inter',fontWeight: FontWeight.w400)),
+            Image.asset('assets/images/fin_logo.png',height: 100,width: 330,),
+            Text('Welcome to Park.Karo.\nGet Started by creating a new account or log in.',style: TextStyle(color:Colors.white,fontFamily: 'Inter',fontWeight: FontWeight.w400)),
             SizedBox(
               height: 20,
             ),
@@ -37,13 +45,17 @@ class LoginScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(builder: (context) => RegisterView()),
                   );
-              }, child: Text('Register')),
+              }, 
+              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),
+              child: Text('Register',style: TextStyle(color: Colors.black),)),
               ElevatedButton(onPressed: (){
                 Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => PendingVerification()),
                   );
-              }, child: Text('Sign In')),
+              }, 
+              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),
+              child: Text('Sign In',style: TextStyle(color: Colors.black),)),
             ],)
           ],)
         )

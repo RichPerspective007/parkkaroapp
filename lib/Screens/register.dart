@@ -124,7 +124,7 @@ class _RegisterViewState extends State<RegisterView> {
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
                         hintText: 'Enter your email.',
-                        hintStyle: TextStyle(fontSize: 15.0, color: Colors.white),
+                        hintStyle: TextStyle(fontSize: 15.0,),
                         border: InputBorder.none,
                       ),
                     ),
@@ -145,7 +145,7 @@ class _RegisterViewState extends State<RegisterView> {
                       obscureText: true,
                       decoration: const InputDecoration(
                         hintText: 'Set a password.',
-                        hintStyle: TextStyle(fontSize: 15.0, color: Colors.white),
+                        hintStyle: TextStyle(fontSize: 15.0,),
                         border: InputBorder.none,
                       ),
                     ),
@@ -168,7 +168,7 @@ class _RegisterViewState extends State<RegisterView> {
                       keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
                         hintText: 'Enter your Aadhar number.',
-                        hintStyle: TextStyle(fontSize: 15.0, color: Colors.white),
+                        hintStyle: TextStyle(fontSize: 15.0,),
                         border: InputBorder.none,
                       ),
                     ),
@@ -189,7 +189,7 @@ class _RegisterViewState extends State<RegisterView> {
                       keyboardType: TextInputType.datetime,
                       decoration: const InputDecoration(
                         hintText: 'Enter your date of birth.',
-                        hintStyle: TextStyle(fontSize: 15.0, color: Colors.white),
+                        hintStyle: TextStyle(fontSize: 15.0,),
                         border: InputBorder.none,
                       ),
                     ),
@@ -210,7 +210,7 @@ class _RegisterViewState extends State<RegisterView> {
                       keyboardType: TextInputType.name,
                       decoration: const InputDecoration(
                         hintText: 'Your Car model.',
-                        hintStyle: TextStyle(fontSize: 15.0, color: Colors.white),
+                        hintStyle: TextStyle(fontSize: 15.0,),
                         border: InputBorder.none,
                       ),
                     ),
@@ -231,7 +231,7 @@ class _RegisterViewState extends State<RegisterView> {
                       keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(
                         hintText: 'Your Car number ID.',
-                        hintStyle: TextStyle(fontSize: 15.0, color: Colors.white),
+                        hintStyle: TextStyle(fontSize: 15.0,),
                         border: InputBorder.none,
                       ),
                     ),
@@ -252,7 +252,7 @@ class _RegisterViewState extends State<RegisterView> {
                       keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
                         hintText: 'Your license number.',
-                        hintStyle: TextStyle(fontSize: 15.0, color: Colors.white),
+                        hintStyle: TextStyle(fontSize: 15.0,),
                         border: InputBorder.none,
                       ),
                     ),
@@ -279,11 +279,15 @@ class _RegisterViewState extends State<RegisterView> {
                         print('This email is already in use. Please use a different email or log in to your account.');
                       }
                     }*/
-                  }, child: const Text('Submit'),),
+                  }, 
+                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(0xFFFFA41B))),
+                  child: const Text('Submit'),),
                   const Text('Already registered?'),
                   ElevatedButton(onPressed: () {
                       Navigator.push(context,MaterialPageRoute(builder: (context) => const LoginScreen()),);
-                    },child: const Text('Login!'))
+                    },
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(0xFFFFA41B))),
+                    child: const Text('Login!'))
               ],
             ),
         ),

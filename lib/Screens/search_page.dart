@@ -10,16 +10,13 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
-  int _selectedIndex = 0;
+  int currentPageIndex = 1;
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-  });
   switch (index) {
     case 0:
       Navigator.push(context, MaterialPageRoute(builder: (context) => MyHomePage()));
     case 1:
-      Navigator.push(context,    MaterialPageRoute(builder: (context) => NavigationScreen()));      
+      Navigator.push(context, MaterialPageRoute(builder: (context) => NavigationScreen()));      
       break;
     case 2:
       Navigator.push(context, MaterialPageRoute(builder: (context) => WalletScreen()));
@@ -36,7 +33,7 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60), // Specify the desired height
+        preferredSize: Size.fromHeight(80), // Specify the desired height
         child: Container(
           margin: EdgeInsets.all(8), // Add margins
           decoration: BoxDecoration(
@@ -115,43 +112,39 @@ class _SearchPageState extends State<SearchPage> {
           ),
         ],
       ),
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          color: Colors.black,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
-        ),
-        child: BottomNavigationBar(
-          type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.black,
-          items: const [
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.home, color: Colors.white),
+      bottomNavigationBar: NavigationBar(
+            onDestinationSelected: (int index) {
+            setState(() {
+              currentPageIndex = index;
+              _onItemTapped(currentPageIndex);
+            });
+          },
+          height: 60,
+          labelBehavior:NavigationDestinationLabelBehavior.alwaysHide,
+          animationDuration: Duration(milliseconds: 1000),
+          indicatorColor: Colors.transparent,
+          backgroundColor: Color(0xFF00B400),
+          selectedIndex: currentPageIndex,
+          destinations: const [
+                  NavigationDestination(
+                    icon: Icon(Icons.home, color: Colors.white,),
                     label: 'Home',
                     
                   ),
-                  BottomNavigationBarItem(
+                  NavigationDestination(
                     icon:Icon(Icons.map_outlined, color: Colors.white),
-                    label: 'Search',
+                    label: 'Navigation',
                   ),
-                  BottomNavigationBarItem(
+                  NavigationDestination(
                     icon:Icon(Icons.wallet, color: Colors.white),
                     label: 'Wallet',
                   ),
-                  BottomNavigationBarItem(
+                  NavigationDestination(
                     icon:Icon(Icons.account_circle_outlined, color: Colors.white),
                     label: 'Account',
                   ),
                 ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white,
-          onTap: _onItemTapped,
         ),
-      )
-
     );
   }
 }

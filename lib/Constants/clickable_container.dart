@@ -23,7 +23,7 @@ class MyClickableContainer extends StatelessWidget {
         width: scrWidth - 30,
         height: 80,
         decoration: ShapeDecoration(
-          color: Color(0xFF3392EA),
+          color: Color(0xFFFFA41B),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(24),
           ),

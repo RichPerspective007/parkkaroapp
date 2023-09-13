@@ -24,7 +24,7 @@ class _QRCodeScreenState extends State<QRCodeScreen> {
                 width:scrWidth-15,
                 height:scrHeight/2,
                 margin:EdgeInsets.fromLTRB(7.5, 10, 7.5, 2),
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(25),color: Colors.lightBlue),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(25),color: Color(0xFFFFA41B)),
                 child: Center(
                   child: Container(
                     width: 278,
@@ -38,7 +38,7 @@ class _QRCodeScreenState extends State<QRCodeScreen> {
                   width: scrWidth-15,
                   height: 100,
                   decoration: ShapeDecoration(
-                      color: Colors.lightBlue,
+                      color: Color(0xFFFFA41B),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                       ),
@@ -47,10 +47,14 @@ class _QRCodeScreenState extends State<QRCodeScreen> {
               SizedBox(height: 10),
               ElevatedButton(onPressed: () {
                 
-              }, child: Text('Resend')),
+              }, 
+              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(0xFFFFA41B))),
+              child: Text('Resend')),
               ElevatedButton(onPressed: () {
                 
-              }, child: Text('Cancel')),
+              }, 
+              style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(0xFFFFA41B))),
+              child: Text('Cancel')),
               SizedBox(height: 10),
               Container(
                 alignment: Alignment.center,
@@ -58,7 +62,7 @@ class _QRCodeScreenState extends State<QRCodeScreen> {
                   width: scrWidth-15,
                   height: scrHeight/8.5,
                   decoration: ShapeDecoration(
-                      color: Color(0xFF353535),
+                      color: Color(0xFF00B400),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                           side: BorderSide(style:BorderStyle.solid,color: context.isDarkMode?Color.fromARGB(198, 237, 138, 25):Colors.transparent,width: 1.0)
