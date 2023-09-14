@@ -71,6 +71,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     height:20
                                   ),
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
                                       IconButton(
                                         icon: const Icon(Icons.menu,color:Colors.white,),
@@ -85,7 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         textAlign: TextAlign.center,
                                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 27, color: Colors.white),
                                       ),
-                                      SizedBox(width: 10.0), // Add space on the right
+                                      SizedBox(width: scrWidth/3.2), // Add space on the right
                                     ],
                                   ),
                                   SizedBox(height: 10.0), // Space between rows
@@ -98,16 +99,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       shape: BoxShape.circle,
                                       color: Colors.grey, // Placeholder color
                                     ),
-                                    child: Image.asset('assets/images/profile-photo.png'),
+                                    child: ClipOval(
+                                      child: Container(
+                                        width: 200,
+                                        height: 200,
+                                        child: Image.asset('assets/images/random_profile.png', // Use Image.asset() if it's an asset image
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    )
                                   ),
                                   SizedBox(height: 13.0), // Space between rows
 
                                   // Third Child: Centered Text
                                   Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      SizedBox(
-                                        width:scrWidth/2 - 80,
-                                      ),
                                       Text(
                                         'Hello, ',
                                         textAlign: TextAlign.center,
