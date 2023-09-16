@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "29293432271",
+    "project_id": "parkkaro-9e08e",
+    "storage_bucket": "parkkaro-9e08e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29293432271:android:616371bec9beebdf7396ba",
+        "android_client_info": {
+          "package_name": "com.example.parkeaseapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO8MRccONAK759y-0WoVJMCHsMdsqNKR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
