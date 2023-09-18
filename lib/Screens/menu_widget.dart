@@ -87,7 +87,7 @@ class NavDrawer extends StatelessWidget {
                       onTap: () {
                         // Action for tapping container
                       },
-                      customContainerColor: Colors.white24,    // Custom container color
+                      customContainerColor: Colors.white,    // Custom container color
                       customContainerHeight: scrHeight/(800/60),
                       customContainerWidth: 250,
                       customAlign: MainAxisAlignment.start,

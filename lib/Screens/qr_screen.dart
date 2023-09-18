@@ -1,14 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
 import 'package:parkeaseapp/main.dart';
-
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:loading_indicator/loading_indicator.dart';
 
 class QRCodeScreen extends StatefulWidget {
+  late final String bookVal;
+  QRCodeScreen({required this.bookVal});
   @override
   State<QRCodeScreen> createState() => _QRCodeScreenState();
 }
 
 class _QRCodeScreenState extends State<QRCodeScreen> {
+  Image? qrCodeImage;
+  Future<void> generateQRCode() async {
+    final apiUrl = Uri.parse('http://codevengers.pythonanywhere.com/generate_qr');
+    final values = widget.bookVal.split(',');
+    print('Going to the api.');
+    final response = await http.post(
+      apiUrl,
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({'values': values}),
+    );
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      final bytes = response.bodyBytes;
+      setState(() {
+        qrCodeImage = Image.memory(bytes);
+        print('qrCodeImage');
+      });
+    }
+  }
+  void initState() {
+    super.initState();
+    generateQRCode(); // Call generateQRCode when the widget is first created
+  }
   @override
   Widget build(BuildContext context) {
     double scrWidth = Constants.screenWidth(context);
@@ -29,11 +56,30 @@ class _QRCodeScreenState extends State<QRCodeScreen> {
                   child: Container(
                     width: 278,
                     height: 278,
-                    color: Colors.grey[200],
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.white),
                     child: Center(
-                      child: Image(image: AssetImage('assets/images/qr_example.png')), // Placeholder for the QR code widget
+                      child: (qrCodeImage != null)
+                        ? qrCodeImage
+                        : Container(
+                          width:100,
+                          height:100,
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                            child: const LoadingIndicator(
+                                indicatorType: Indicator.circleStrokeSpin,
+                                colors: [Colors.orange],
+                                strokeWidth: 2,
+                                backgroundColor: Colors.white,
+                                pathBackgroundColor: Colors.black,
+                              ),
+                          ),
+                        ),
                     ),
-                  ))),
+                  )
+                  )),
               Container(
                   width: scrWidth-15,
                   height: 100,
@@ -73,20 +119,6 @@ class _QRCodeScreenState extends State<QRCodeScreen> {
             ]
           ),
         ),
-      ),
-    );
-  }
-}
-
-class ContainerWithQRSpace extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 200,
-      height: 200,
-      color: Colors.grey[200],
-      child: Center(
-        child: Placeholder(), // Placeholder for the QR code widget
       ),
     );
   }

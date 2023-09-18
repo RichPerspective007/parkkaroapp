@@ -3,7 +3,6 @@ import 'package:parkeaseapp/Constants/constants.dart';
 import 'package:parkeaseapp/Screens/qr_screen.dart';
 import 'package:parkeaseapp/main.dart';
 
-
 class PayAndBook extends StatefulWidget {
   const PayAndBook({super.key});
 
@@ -16,6 +15,19 @@ class _PayAndBookState extends State<PayAndBook> {
   int quantity = 0;
   double rate = 50.0;
   double totalPrice = 0.0;
+  String parkLocId = "parkkol0001";
+  String userID = "u16901622017";
+  int bookCount = 876;
+  String carNumberPlate = "wb12345678";
+  
+  TimeOfDay addHoursToTime(TimeOfDay time, int hoursToAdd) {
+    final minutes = time.hour * 60 + time.minute;
+    final newMinutes = minutes + (hoursToAdd * 60);
+    final newHour = newMinutes ~/ 60;
+    final newMinute = newMinutes % 60;
+    return TimeOfDay(hour: newHour, minute: newMinute);
+  }
+
   void incrementQuantity() {
     setState(() {
       quantity++;
@@ -40,6 +52,7 @@ class _PayAndBookState extends State<PayAndBook> {
     if (picked != null && picked != selectedTime) {
       setState(() {
         selectedTime = picked;
+        print(selectedTime);
       });
     }
   }
@@ -48,6 +61,7 @@ class _PayAndBookState extends State<PayAndBook> {
   Widget build(BuildContext context) {
     double scrHeight = Constants.screenHeight(context);
     double scrWidth = Constants.screenWidth(context);
+    print(selectedTime);
     return Scaffold(
       body:Stack(
         children: [
@@ -149,7 +163,7 @@ class _PayAndBookState extends State<PayAndBook> {
                     width:200,
                     child: ElevatedButton(onPressed:() {
                       
-      Navigator.push(context, MaterialPageRoute(builder: (context) => QRCodeScreen()));    
+      Navigator.push(context, MaterialPageRoute(builder: (context) => QRCodeScreen(bookVal:'$bookCount,$userID,$parkLocId,$selectedTime,${addHoursToTime(selectedTime, quantity)},$carNumberPlate')));    
                 }, 
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(context.isDarkMode?Colors.blueGrey:Colors.white),

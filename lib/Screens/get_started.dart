@@ -3,7 +3,6 @@ import 'package:parkeaseapp/Screens/login_screen.dart';
 
 class GetStarted extends StatelessWidget {
   const GetStarted({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +12,7 @@ class GetStarted extends StatelessWidget {
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/SplashScreen.png"),
+                image: AssetImage("assets/images/new_splash2.png"),
                 fit: BoxFit.cover,
               ),
             ),

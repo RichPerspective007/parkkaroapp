@@ -96,8 +96,9 @@ class _WalletScreenState extends State<WalletScreen> {
           ),
         ),
         ),
-      body: SingleChildScrollView
-      (child: Container(
+      body: SingleChildScrollView(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+        child: Container(
         color: context.isDarkMode ? Color(0xFF353535): Colors.white ,
         child: Column(
           children: [
@@ -303,6 +304,7 @@ class _WalletScreenState extends State<WalletScreen> {
             setState(() {
               currentPageIndex = index;
               _onItemTapped(currentPageIndex);
+              currentPageIndex = 2;
             });
           },
           height: 60,

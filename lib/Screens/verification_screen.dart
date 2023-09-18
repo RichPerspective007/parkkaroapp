@@ -139,7 +139,7 @@ class _PendingVerificationState extends State<PendingVerification> {
                                   ),
                                 ),
                                 backgroundColor: MaterialStateProperty.all<Color>(
-                                  Colors.blueGrey, // Customize the background color
+                                  _otpResendTimer == 0 ?Colors.blue:Colors.blueGrey // Customize the background color
                                 ),
                                 foregroundColor: MaterialStateProperty.all<Color>(
                                   Colors.white, // Customize the text color

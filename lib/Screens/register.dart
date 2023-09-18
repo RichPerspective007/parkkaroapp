@@ -82,6 +82,7 @@ class _RegisterViewState extends State<RegisterView> {
         ),
         ),
       body: SingleChildScrollView(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         child: Container(
           color: context.isDarkMode?Color(0xFF353535): Colors.white,
           child: Column(

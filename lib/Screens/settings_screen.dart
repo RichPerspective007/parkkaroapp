@@ -16,7 +16,7 @@ class Settings extends StatelessWidget {
           margin: EdgeInsets.all(8), // Add margins
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20), // Add border radius
-            color: Colors.blue,
+            color: Color(0xFFFFA41B),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -50,6 +50,7 @@ class Settings extends StatelessWidget {
         ),
       
       body: SingleChildScrollView(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
         child: Container(
           padding: EdgeInsets.all(15),
           color: context.isDarkMode?Color(0xFF353535):Colors.white,
