@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:parkeaseapp/Screens/user_auth_choice.dart';
+import 'package:parkeaseapp/Screens/custom_load.dart';
 
 class GetStarted extends StatelessWidget {
   const GetStarted({super.key});
@@ -46,7 +46,7 @@ class GetStarted extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const UserAuthChoice()),
+                        MaterialPageRoute(builder: (context) => const CustomLoad()),
                       );
                               
                     },

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
 import 'package:parkeaseapp/Screens/register.dart';
 import 'package:parkeaseapp/Screens/signin.dart';
-import 'package:parkeaseapp/Screens/verification_screen.dart';
 
 class UserAuthChoice extends StatelessWidget {
   const UserAuthChoice({super.key});
@@ -34,7 +33,9 @@ class UserAuthChoice extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(30)),
           child: Column(children: [
-            Image.asset('assets/images/fin_logo.png',height: 100,width: 330,),
+            Hero(
+              tag:'AppLogo',
+              child: Image.asset('assets/images/fin_logo.png',height: 100,width: 330,)),
             Text('Welcome to Park.Karo.\nGet Started by creating a new account or log in.',style: TextStyle(color:Colors.white,fontFamily: 'Inter',fontWeight: FontWeight.w400)),
             SizedBox(
               height: 20,
