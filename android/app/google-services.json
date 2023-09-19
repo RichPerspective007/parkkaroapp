@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "29293432271",
+    "project_id": "parkkaro-9e08e",
+    "storage_bucket": "parkkaro-9e08e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29293432271:android:616371bec9beebdf7396ba",
+        "android_client_info": {
+          "package_name": "com.example.parkeaseapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "29293432271-p45c4ksdc7lr1p3bfaodsd05om9kacc0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO8MRccONAK759y-0WoVJMCHsMdsqNKR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "29293432271-p45c4ksdc7lr1p3bfaodsd05om9kacc0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "29293432271-riveinhof39pl58r5jeeoppt2ijkmo8b.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.parkeaseapp.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

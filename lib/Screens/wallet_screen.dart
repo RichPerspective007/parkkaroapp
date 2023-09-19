@@ -39,6 +39,7 @@ class _WalletScreenState extends State<WalletScreen> {
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     double scrWidth = Constants.screenWidth(context);
     double scrHeight = Constants.screenHeight(context);
+    currentPageIndex=2;
     return Scaffold(
       extendBodyBehindAppBar: true,
       key: scaffoldKey,

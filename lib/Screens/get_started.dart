@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:parkeaseapp/Screens/login_screen.dart';
+import 'package:parkeaseapp/Screens/user_auth_choice.dart';
 
 class GetStarted extends StatelessWidget {
   const GetStarted({super.key});
@@ -25,33 +25,39 @@ class GetStarted extends StatelessWidget {
                 width: 230,
                 height: 50,
                 margin: EdgeInsets.only(bottom:50),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const LoginScreen()),
-                    );
-              
-                  },
-                  style: ButtonStyle(
-                                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0), // Customize the border radius
-                                    ),
-                                  ),
-                                  backgroundColor: MaterialStateProperty.all<Color>(
-                                    Colors.lightBlue, // Customize the background color
-                                  ),
-                                  foregroundColor: MaterialStateProperty.all<Color>(
-                                    Colors.white, // Customize the text color
-                                  ),
-                                  textStyle: MaterialStateProperty.all<TextStyle>(
-                                    TextStyle(
-                                      fontSize: 16.0, // Customize the text size
-                                    ),
-                                  ),
-                                ),
-                  child: const Text("Get Started",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [
+                        Colors.orange, 
+                        Colors.green
+                        //add more colors
+                      ]),
+                    borderRadius: BorderRadius.circular(5),
+                      boxShadow: const <BoxShadow>[
+                        BoxShadow(
+                            color: Color.fromRGBO(0, 0, 0, 0.57), //shadow for button
+                            blurRadius: 5) //blur radius of shadow
+                      ]
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const UserAuthChoice()),
+                      );
+                              
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      disabledBackgroundColor: Colors.transparent,
+                      disabledForegroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                    ),
+                    child: const Text("Get Started",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                  ),
                 ),
               ),
             ),

@@ -42,6 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     double scrWidth = Constants.screenWidth(context);
     double scrHeight = Constants.screenHeight(context);
+    currentPageIndex=3;
     const String userName = 'User';
     const String carNumberPlate = 'WB **** ** 7845';
     return Scaffold(

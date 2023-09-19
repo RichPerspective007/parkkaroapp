@@ -45,6 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+    currentPageIndex=0;
     print(Constants.screenHeight);
     const String username = 'User';
     bool bookings=true; // Change this value to take first name from profile.

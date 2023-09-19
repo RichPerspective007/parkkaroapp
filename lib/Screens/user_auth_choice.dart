@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
 import 'package:parkeaseapp/Screens/register.dart';
+import 'package:parkeaseapp/Screens/signin.dart';
 import 'package:parkeaseapp/Screens/verification_screen.dart';
-import 'package:parkeaseapp/main.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class UserAuthChoice extends StatelessWidget {
+  const UserAuthChoice({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
             ),
         ),
         child: Container(
-          height: scrHeight-400,
+          height: scrHeight/2.2,
           width: scrWidth-20,
           margin:EdgeInsets.fromLTRB(9, 0.625*scrHeight, 9, 38),
           decoration: BoxDecoration(gradient: LinearGradient(
@@ -51,7 +51,7 @@ class LoginScreen extends StatelessWidget {
               ElevatedButton(onPressed: (){
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => PendingVerification()),
+                    MaterialPageRoute(builder: (context) => LoginView()),
                   );
               }, 
               style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Colors.white)),

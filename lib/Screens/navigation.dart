@@ -69,6 +69,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
   }
   @override
   Widget build(BuildContext context) {
+    currentPageIndex=1;
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(

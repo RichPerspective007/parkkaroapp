@@ -1,7 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:parkeaseapp/Screens/login_screen.dart';
+import 'package:parkeaseapp/Screens/signin.dart';
+import 'package:parkeaseapp/Screens/user_auth_choice.dart';
 import 'package:parkeaseapp/main.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:parkeaseapp/firebase_options.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -88,7 +92,7 @@ class _RegisterViewState extends State<RegisterView> {
           child: Column(
               children: [
                 SizedBox(height: 85,),
-                Container(
+                /*Container(
                     margin:EdgeInsets.all(10),
                     padding: EdgeInsets.only(left: 15),
                     decoration: BoxDecoration(
@@ -108,7 +112,7 @@ class _RegisterViewState extends State<RegisterView> {
                         border: InputBorder.none,
                       ),
                     ),
-                  ),
+                  ),*/
                 Container(
                     margin:EdgeInsets.all(10),
                     padding: EdgeInsets.only(left: 15),
@@ -118,7 +122,7 @@ class _RegisterViewState extends State<RegisterView> {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: TextField(
-                      style: TextStyle(color: Colors.white54),
+                      style: TextStyle(color: context.isDarkMode?Colors.white54:Colors.black),
                       controller: _email,
                       enableSuggestions: false,
                       autocorrect: false,
@@ -139,7 +143,7 @@ class _RegisterViewState extends State<RegisterView> {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: TextField(
-                      style: TextStyle(color: Colors.white54),
+                      style: TextStyle(color: context.isDarkMode?Colors.white54:Colors.black),
                       controller: _password,
                       enableSuggestions: false,
                       autocorrect: false,
@@ -151,7 +155,7 @@ class _RegisterViewState extends State<RegisterView> {
                       ),
                     ),
                   ),
-                Container(
+                /*Container(
                     margin:EdgeInsets.all(10),
                     padding: EdgeInsets.only(left: 15),
                     decoration: BoxDecoration(
@@ -258,9 +262,12 @@ class _RegisterViewState extends State<RegisterView> {
                       ),
                     ),
                   ),
-                
-                ElevatedButton(onPressed: () /*async*/ {
-                    /*final email = _email.text;
+                */
+                ElevatedButton(onPressed: () async {
+                  await Firebase.initializeApp(
+                      options: DefaultFirebaseOptions.currentPlatform,
+                    );
+                    final email = _email.text;
                     final password = _password.text;
                     try {
                       final userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -268,6 +275,10 @@ class _RegisterViewState extends State<RegisterView> {
                         password: password
                       );
                       print(userCredential);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginView()),
+                      );
                     }
                     on FirebaseAuthException catch (e){
                       if (e.code == 'invalid-email'){
@@ -279,13 +290,13 @@ class _RegisterViewState extends State<RegisterView> {
                       else if (e.code == 'email-already-in-use'){
                         print('This email is already in use. Please use a different email or log in to your account.');
                       }
-                    }*/
+                    }
                   }, 
                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(0xFFFFA41B))),
                   child: const Text('Submit'),),
                   const Text('Already registered?'),
                   ElevatedButton(onPressed: () {
-                      Navigator.push(context,MaterialPageRoute(builder: (context) => const LoginScreen()),);
+                      Navigator.push(context,MaterialPageRoute(builder: (context) => const LoginView()),);
                     },
                     style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(0xFFFFA41B))),
                     child: const Text('Login!'))
