@@ -83,7 +83,6 @@ class _LoginViewState extends State<LoginView> {
           ),
           ),
         body: SingleChildScrollView(
-          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
           child: Container(
             height: scrHeight,
             width: scrWidth,

@@ -39,7 +39,7 @@ class _SearchPageState extends State<SearchPage> {
             margin: EdgeInsets.all(8), // Add margins
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20), // Add border radius
-              color: Colors.blue,
+              color: Color(0xFFFFA41B),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

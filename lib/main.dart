@@ -43,4 +43,13 @@ extension DarkMode on BuildContext {
     final brightness = MediaQuery.of(this).platformBrightness;
     return brightness == Brightness.dark;
   }
+  set isDarkMode(bool value) {
+    final Brightness newBrightness = value ? Brightness.dark : Brightness.light;
+    final Brightness currentBrightness = MediaQuery.of(this).platformBrightness;
+    if (newBrightness != currentBrightness) {
+      // Change the theme based on the new brightness
+      // You can implement your theme changing logic here
+      // For example, you can use Provider or InheritedWidget to manage the app's theme.
+    }
+  }
 }

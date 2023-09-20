@@ -96,7 +96,6 @@ class _RegisterViewState extends State<RegisterView> {
           ),
           ),
         body: SingleChildScrollView(
-          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
           child: Container(
             height: scrHeight,
             width: scrWidth,

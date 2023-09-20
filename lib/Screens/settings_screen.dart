@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:parkeaseapp/Constants/clickable_container.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
+import 'package:parkeaseapp/Screens/profile.dart';
 import 'package:parkeaseapp/main.dart';
-class Settings extends StatelessWidget {
+class Settings extends StatefulWidget {
   const Settings({super.key});
 
   @override
+  State<Settings> createState() => _SettingsState();
+}
+
+class _SettingsState extends State<Settings> {
+  @override
   Widget build(BuildContext context) {
     double scrHeight = Constants.screenHeight(context);
+    void changeTheme(){
+      setState((){
+        if (context.isDarkMode){
+          context.isDarkMode = false;
+        }
+        else{
+          context.isDarkMode = true;
+        }
+      });
+    }
     return SafeArea(
       child: Scaffold(
         extendBodyBehindAppBar:true,
@@ -40,7 +56,10 @@ class Settings extends StatelessWidget {
                       icon: const Icon(Icons.account_circle_outlined,color: Colors.white,),
                       iconSize: 40,
                       onPressed: () {
-                        // Add your search button functionality here
+                        Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const ProfileScreen()),
+                      );// Add your search button functionality here
                       },
                     ),]),
                 
@@ -51,7 +70,6 @@ class Settings extends StatelessWidget {
           ),
         
         body: SingleChildScrollView(
-          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
           child: Container(
             padding: EdgeInsets.all(15),
             color: context.isDarkMode?Color(0xFF353535):Colors.white,
@@ -92,10 +110,7 @@ class Settings extends StatelessWidget {
                   text: 'Dark Mode',
                   customIconData: Icons.curtains_closed,
                   onTap: () {
-                     /*Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ThemeSelection()),
-                      );*/// Action for tapping container
+                     changeTheme();// Action for tapping container
                   },
                   customContainerColor: Colors.white24,    // Custom container color
                   customContainerHeight: scrHeight/(800/60),        // Custom container height
@@ -197,10 +212,10 @@ class Settings extends StatelessWidget {
                   text: 'Log Out',
                   customIconData: Icons.logout,
                   onTap: () {
-                     Navigator.push(
+                     /*Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => Settings()),
-                      );// Action for tapping container
+                      );*/// Action for tapping container
                   },
                   customContainerColor: Colors.white24,    // Custom container color
                   customContainerHeight: scrHeight/(800/60),        // Custom container height
