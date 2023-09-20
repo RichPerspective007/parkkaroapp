@@ -61,139 +61,170 @@ class _PayAndBookState extends State<PayAndBook> {
   Widget build(BuildContext context) {
     double scrHeight = Constants.screenHeight(context);
     double scrWidth = Constants.screenWidth(context);
+    Future<void> _displayTextInputDialog(BuildContext context) async {
+      return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Invalid number of hours.'),
+            content: const Text(
+              'Number of hours cannot be zero.'
+            ),
+            actions: <Widget>[
+              MaterialButton(
+                color: Colors.green,
+                textColor: Colors.white,
+                child: const Text('OK'),
+                onPressed: () {
+                  setState(() {
+                    Navigator.pop(context);
+                  });
+                },
+              ),
+            ],
+          );
+        });
+      }
     print(selectedTime);
     return SafeArea(
       child: Scaffold(
-        body:Stack(
-          children: [
-            Column(children: [
-              SizedBox(height:25),
-              Container(
-                height:scrHeight*5.5/8,
-                width:scrWidth-15,
-                margin: EdgeInsets.only(left:7,right:7),
-                decoration: BoxDecoration(color: Color(0xFFFFA41B),borderRadius: BorderRadius.circular(30)),
-                child:Column(
-                  children: [
-                  SizedBox(height:30),
-                  Container(
-                    width: 275,
-                    height: 200,
-                    decoration: ShapeDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/images/park.png'),
-                            fit: BoxFit.fill,
-                        ),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
+        body:SingleChildScrollView(
+          child: Stack(
+            children: [
+              Column(children: [
+                SizedBox(height:25),
+                Container(
+                  height:scrHeight*5.5/8,
+                  width:scrWidth-15,
+                  margin: EdgeInsets.only(left:7,right:7),
+                  decoration: BoxDecoration(color: Color(0xFFFFA41B),borderRadius: BorderRadius.circular(30)),
+                  child:Column(
+                    children: [
+                    SizedBox(height:30),
+                    Container(
+                      width: 275,
+                      height: 200,
+                      decoration: ShapeDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/park.png'),
+                              fit: BoxFit.fill,
+                          ),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                          ),
                         ),
                       ),
+                    SizedBox(height:15),
+                    const Row(children: [
+                      SizedBox(width:50),
+                      Column(children: [Text('Parking name',style:TextStyle(color:Colors.white,fontSize: 24)),Text('Street name',style:TextStyle(color:Colors.white,fontSize: 16))],),
+                      SizedBox(width:50),
+                      Text('Open',style:TextStyle(color:Colors.white,fontSize: 16))
+                    ],),
+                    SizedBox(height:5),
+                    Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            'Starting Time: ${selectedTime.format(context)}',
+                            style: TextStyle(fontSize: 18,color: Colors.white),
+                          ),
+                          SizedBox(width:5),
+                          OutlinedButton(
+                            onPressed: () => _selectTime(context),
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(context.isDarkMode?Colors.blueGrey:Colors.white),), // Change the color here
+                              // You can customize other button properties here as well, like text color, shape, etc.
+                    
+                            child: Text('Pick a Time',style:TextStyle(color:context.isDarkMode?Colors.white:Color(0xFF3392EA))),
+                          ),
+                        ],
+                      ),
                     ),
-                  SizedBox(height:15),
-                  const Row(children: [
-                    SizedBox(width:50),
-                    Column(children: [Text('Parking name',style:TextStyle(color:Colors.white,fontSize: 24)),Text('Street name',style:TextStyle(color:Colors.white,fontSize: 16))],),
-                    SizedBox(width:50),
-                    Text('Open',style:TextStyle(color:Colors.white,fontSize: 16))
-                  ],),
-                  SizedBox(height:5),
-                  Center(
-                    child: Row(
+                    Text('Rate: $rate per hour',style:TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.w600)),
+                    SizedBox(height: 5),
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Text(
-                          'Starting Time: ${selectedTime.format(context)}',
-                          style: TextStyle(fontSize: 18,color: Colors.white),
+                        IconButton(
+                          icon: Icon(Icons.remove,color:Colors.black),
+                          onPressed: decrementQuantity,
+                          iconSize: 24,
+                          color: Colors.white,
                         ),
-                        SizedBox(width:5),
-                        OutlinedButton(
-                          onPressed: () => _selectTime(context),
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(context.isDarkMode?Colors.blueGrey:Colors.white),), // Change the color here
-                            // You can customize other button properties here as well, like text color, shape, etc.
-                  
-                          child: Text('Pick a Time',style:TextStyle(color:context.isDarkMode?Colors.white:Color(0xFF3392EA))),
+                        Text(
+                          'Number of hours:   $quantity',
+                          style: const TextStyle(fontSize: 16,color: Colors.white),
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.add,color:Colors.black),
+                          onPressed: incrementQuantity,
+                          iconSize: 24,
+                          color: Colors.white,
                         ),
                       ],
                     ),
-                  ),
-                  Text('Rate: $rate per hour',style:TextStyle(fontSize: 20,color: Colors.white,fontWeight: FontWeight.w600)),
-                  SizedBox(height: 5),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      IconButton(
-                        icon: Icon(Icons.remove,color:Colors.black),
-                        onPressed: decrementQuantity,
-                        iconSize: 24,
-                        color: Colors.white,
-                      ),
-                      Text(
-                        'Number of hours:   $quantity',
-                        style: const TextStyle(fontSize: 16,color: Colors.white),
-                      ),
-                      IconButton(
-                        icon: Icon(Icons.add,color:Colors.black),
-                        onPressed: incrementQuantity,
-                        iconSize: 24,
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
-                ],)
-              ),
-              Container(
-                height:scrHeight*2/8,
-                width:scrWidth-15,
-                margin: EdgeInsets.only(left:7,right:7),
-                decoration: BoxDecoration(gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: [
-                    Color(0xFFFF671F),
-                    Color(0xFF14B265)
-                  ]
-                ),borderRadius: BorderRadius.circular(30)),
-                child: Center(
-                  child:Column(children: [
-                    SizedBox(height:30),
-                    Text('Pay  $totalPrice INR',style: const TextStyle(fontSize: 30,color: Color(0xFF06038D),fontWeight: FontWeight.w700),),
-                    SizedBox(height:10),
-                    Container(
-                      height:50,
-                      width:200,
-                      child: ElevatedButton(onPressed:() {
-                        
-        Navigator.push(context, MaterialPageRoute(builder: (context) => QRCodeScreen(bookVal:'$bookCount,$userID,$parkLocId,$selectedTime,${addHoursToTime(selectedTime, quantity)},$carNumberPlate')));    
-                  }, 
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(context.isDarkMode?Colors.blueGrey:Colors.white),
-                        foregroundColor: MaterialStateProperty.all<Color>(context.isDarkMode?Colors.white:Color(0xFF3392EA)),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20), // Change the button shape
-                      ),
-                                ),
+                  ],)
+                ),
+                Container(
+                  height:scrHeight*2/8,
+                  width:scrWidth-15,
+                  margin: EdgeInsets.only(left:7,right:7),
+                  decoration: BoxDecoration(gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Color(0xFFFF671F),
+                      Color(0xFF14B265)
+                    ]
+                  ),borderRadius: BorderRadius.circular(30)),
+                  child: Center(
+                    child:Column(children: [
+                      SizedBox(height:30),
+                      Text('Pay  $totalPrice INR',style: const TextStyle(fontSize: 30,color: Color(0xFF06038D),fontWeight: FontWeight.w700),),
+                      SizedBox(height:10),
+                      Container(
+                        height:50,
+                        width:200,
+                        child: ElevatedButton(onPressed:() {
+                          if (quantity==0)
+                          {
+                            _displayTextInputDialog(context);
+                          }
+                          else{
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => QRCodeScreen(bookVal:'$bookCount,$userID,$parkLocId,$selectedTime,${addHoursToTime(selectedTime, quantity)},$carNumberPlate')));
+                          }    
+                    }, 
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(context.isDarkMode?Colors.blueGrey:Colors.white),
+                          foregroundColor: MaterialStateProperty.all<Color>(context.isDarkMode?Colors.white:Color(0xFF3392EA)),
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20), // Change the button shape
                         ),
-                      child: Text('Proceed to pay',style:TextStyle(fontSize: 20))),
-                    )
-                  ],),
+                                  ),
+                          ),
+                        child: Text('Proceed to pay',style:TextStyle(fontSize: 20))),
+                      )
+                    ],),
+                  ),
+                ),
+              ],),
+              Positioned(
+                top: 20,
+                left: 10,
+                child: IconButton(
+                  icon: Icon(Icons.arrow_back),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  iconSize: 36,
+                  color: Colors.white,
                 ),
               ),
-            ],),
-            Positioned(
-              top: 20,
-              left: 10,
-              child: IconButton(
-                icon: Icon(Icons.arrow_back),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                iconSize: 36,
-                color: Colors.white,
-              ),
-            ),
-          ],
+            ],
+          ),
         )
       ),
     );

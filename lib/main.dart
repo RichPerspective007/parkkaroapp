@@ -41,7 +41,8 @@ extension DarkMode on BuildContext {
   /// is dark mode currently enabled?
   bool get isDarkMode {
     final brightness = MediaQuery.of(this).platformBrightness;
-    return brightness == Brightness.dark;
+    final themeval = brightness == Brightness.dark;
+    return themeval;
   }
   set isDarkMode(bool value) {
     final Brightness newBrightness = value ? Brightness.dark : Brightness.light;

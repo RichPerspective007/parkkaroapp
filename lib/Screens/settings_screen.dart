@@ -88,7 +88,7 @@ class _SettingsState extends State<Settings> {
                   customContainerColor: Colors.white24,    // Custom container color
                   customContainerHeight: scrHeight/(800/60),        // Custom container height
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 12,
                 ),
                 CustomizedClickableContainer.icon(
@@ -103,7 +103,7 @@ class _SettingsState extends State<Settings> {
                   customContainerColor: Colors.white24,    // Custom container color
                   customContainerHeight: scrHeight/(800/60),        // Custom container height
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 12,
                 ),
                 CustomizedClickableContainer.icon(
