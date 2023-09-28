@@ -52,7 +52,6 @@ class _PayAndBookState extends State<PayAndBook> {
     if (picked != null && picked != selectedTime) {
       setState(() {
         selectedTime = picked;
-        print(selectedTime);
       });
     }
   }
@@ -61,7 +60,7 @@ class _PayAndBookState extends State<PayAndBook> {
   Widget build(BuildContext context) {
     double scrHeight = Constants.screenHeight(context);
     double scrWidth = Constants.screenWidth(context);
-    Future<void> _displayTextInputDialog(BuildContext context) async {
+    Future<void> displayTextInputDialog(BuildContext context) async {
       return showDialog(
         context: context,
         builder: (context) {
@@ -85,20 +84,20 @@ class _PayAndBookState extends State<PayAndBook> {
           );
         });
       }
-    print(selectedTime);
     return SafeArea(
       child: Scaffold(
         body:SingleChildScrollView(
           child: Stack(
             children: [
               Column(children: [
-                SizedBox(height:25),
+                SizedBox(height:10),
                 Container(
                   height:scrHeight*5.5/8,
                   width:scrWidth-15,
                   margin: EdgeInsets.only(left:7,right:7),
                   decoration: BoxDecoration(color: Color(0xFFFFA41B),borderRadius: BorderRadius.circular(30)),
                   child:Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                     SizedBox(height:30),
                     Container(
@@ -190,7 +189,7 @@ class _PayAndBookState extends State<PayAndBook> {
                         child: ElevatedButton(onPressed:() {
                           if (quantity==0)
                           {
-                            _displayTextInputDialog(context);
+                            displayTextInputDialog(context);
                           }
                           else{
                             Navigator.push(context, MaterialPageRoute(builder: (context) => QRCodeScreen(bookVal:'$bookCount,$userID,$parkLocId,$selectedTime,${addHoursToTime(selectedTime, quantity)},$carNumberPlate')));

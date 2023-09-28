@@ -7,6 +7,7 @@ import 'package:parkeaseapp/Screens/verification_screen.dart';
 import 'package:parkeaseapp/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:parkeaseapp/firebase_options.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -155,6 +156,43 @@ class _LoginViewState extends State<LoginView> {
                       on FirebaseAuthException catch (e){
                         if (e.code == 'INVALID_LOGIN_CREDENTIALS'){
                           print('Invalid email-password combination');
+                          Alert(
+                            context: context,
+                            title: "Invalid email-password combination",
+                            desc: "Please check your credentials.",
+                            type: AlertType.error,
+                            //image: Image.asset('assets/images/alertimg3.jpg'),
+                            buttons: [
+                              DialogButton(
+                                child: Text(
+                                  "COOL",
+                                  style: TextStyle(color: Colors.white, fontSize: 20),
+                                ),
+                                onPressed: () => Navigator.pop(context),
+                                width: 120,
+                              )
+                            ],
+                          ).show();
+                        }
+                        else if (e.code == 'invalid-email'){
+                          print('The entered email is invalid.');
+                          Alert(
+                            context: context,
+                            title: "INVALID EMAIL",
+                            desc: "Please enter a valid email ID.",
+                            type: AlertType.error,
+                            //image: Image.asset('assets/images/alertimg4.jpg'),
+                            buttons: [
+                              DialogButton(
+                                child: Text(
+                                  "COOL",
+                                  style: TextStyle(color: Colors.white, fontSize: 20),
+                                ),
+                                onPressed: () => Navigator.pop(context),
+                                width: 120,
+                              )
+                            ],
+                          ).show();
                         }
                       }
                     }, 

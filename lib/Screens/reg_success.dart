@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
 import 'package:parkeaseapp/Screens/signin.dart';
-
 class NewUserReg extends StatelessWidget {
   const NewUserReg({super.key});
 

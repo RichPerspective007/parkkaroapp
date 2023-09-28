@@ -6,6 +6,7 @@ import 'package:parkeaseapp/Screens/signin.dart';
 import 'package:parkeaseapp/main.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:parkeaseapp/firebase_options.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -299,22 +300,73 @@ class _RegisterViewState extends State<RegisterView> {
                       on FirebaseAuthException catch (e){
                         if (e.code == 'invalid-email'){
                           print('The entered email is invalid.');
+                          Alert(
+                            context: context,
+                            title: "INVALID EMAIL",
+                            desc: "Please enter a valid email ID.",
+                            type: AlertType.error,
+                            //image: Image.asset('assets/images/alertimg4.jpg'),
+                            buttons: [
+                              DialogButton(
+                                child: Text(
+                                  "COOL",
+                                  style: TextStyle(color: Colors.white, fontSize: 20),
+                                ),
+                                onPressed: () => Navigator.pop(context),
+                                width: 120,
+                              )
+                            ],
+                          ).show();
                         }
                         else if (e.code == 'weak-password'){
                           print('The password is too weak.\nIt must be atleast 6 characters long.');
+                          Alert(
+                            context: context,
+                            title: "WEAK PASSWORD",
+                            type: AlertType.error,
+                            desc: "The password should have atleast 6 characters.",
+                            //image: Image.asset('assets/images/alertimg1.jpg'),
+                            buttons: [
+                              DialogButton(
+                                child: Text(
+                                  "COOL",
+                                  style: TextStyle(color: Colors.white, fontSize: 20),
+                                ),
+                                onPressed: () => Navigator.pop(context),
+                                width: 120,
+                              )
+                            ],
+                          ).show();
                         }
                         else if (e.code == 'email-already-in-use'){
                           print('This email is already in use. Please use a different email or log in to your account.');
+                          Alert(
+                            context: context,
+                            title: "EMAIL ALREADY IN USE",
+                            type: AlertType.error,
+                            desc: "An account already exists with this email. You can login with this email or create a new account with a different email.",
+                            //image: Image.asset('assets/images/alertimg2.jpg'),
+                            buttons: [
+                              DialogButton(
+                                child: Text(
+                                  "COOL",
+                                  style: TextStyle(color: Colors.white, fontSize: 20),
+                                ),
+                                onPressed: () => Navigator.pop(context),
+                                width: 120,
+                              )
+                            ],
+                          ).show();
                         }
                       }
                     }, 
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(0xFFFFA41B))),
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xFFFFA41B))),
                     child: const Text('Submit'),),
                     Text('Already registered?',style: TextStyle(color: context.isDarkMode?Colors.white:Colors.black),),
                     ElevatedButton(onPressed: () {
                         Navigator.push(context,MaterialPageRoute(builder: (context) => const LoginView()),);
                       },
-                      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(Color(0xFFFFA41B))),
+                      style: ButtonStyle(backgroundColor: MaterialStateProperty.all(const Color(0xFFFFA41B))),
                       child: const Text('Login!'))
                 ],
               ),

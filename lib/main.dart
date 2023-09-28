@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:parkeaseapp/Screens/user_auth_choice.dart';
 import 'Screens/get_started.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/services.dart';
@@ -34,6 +35,9 @@ class MyApp extends StatelessWidget {
     ),
       ),
       home: GetStarted(),
+      routes: {
+        '/signout':(context) => UserAuthChoice(),
+      },
     );
   }
 }

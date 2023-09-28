@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:parkeaseapp/Constants/clickable_container.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
+import 'package:parkeaseapp/Screens/menu_widget.dart';
 import 'package:parkeaseapp/Screens/profile.dart';
 import 'package:parkeaseapp/main.dart';
 class Settings extends StatefulWidget {
@@ -14,19 +16,16 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     double scrHeight = Constants.screenHeight(context);
+    bool dm = context.isDarkMode;
     void changeTheme(){
       setState((){
-        if (context.isDarkMode){
-          context.isDarkMode = false;
-        }
-        else{
-          context.isDarkMode = true;
-        }
+        dm = !dm;
       });
     }
     return SafeArea(
       child: Scaffold(
         extendBodyBehindAppBar:true,
+        drawer: NavDrawer(),
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(80), // Specify the desired height
           child: Container(
@@ -72,7 +71,7 @@ class _SettingsState extends State<Settings> {
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.all(15),
-            color: context.isDarkMode?Color(0xFF353535):Colors.white,
+            color: dm?Color(0xFF353535):Colors.white,
             child: Column(
               children: [
                 const SizedBox(height: 75,),
@@ -211,11 +210,9 @@ class _SettingsState extends State<Settings> {
                 CustomizedClickableContainer.icon(
                   text: 'Log Out',
                   customIconData: Icons.logout,
-                  onTap: () {
-                     /*Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Settings()),
-                      );*/// Action for tapping container
+                  onTap: () async{
+                      await FirebaseAuth.instance.signOut();
+                      Navigator.of(context).pushNamedAndRemoveUntil('/signout', (Route route) => false);// Action for tapping container
                   },
                   customContainerColor: Colors.white24,    // Custom container color
                   customContainerHeight: scrHeight/(800/60),        // Custom container height
