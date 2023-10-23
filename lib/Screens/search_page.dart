@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:parkeaseapp/Screens/home_page_2.dart';
+import 'package:parkeaseapp/Screens/new_home_ui.dart';
 import 'package:parkeaseapp/Screens/profile.dart';
 import 'package:parkeaseapp/Screens/wallet_screen.dart';
 import 'package:parkeaseapp/Screens/navigation.dart';
@@ -39,7 +39,7 @@ class _SearchPageState extends State<SearchPage> {
             margin: EdgeInsets.all(8), // Add margins
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20), // Add border radius
-              color: Color(0xFFFFA41B),
+              color: const Color(0xFFFFA41B),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -78,8 +78,8 @@ class _SearchPageState extends State<SearchPage> {
               borderRadius: BorderRadius.circular(25),
               ),
               ),
-              padding: EdgeInsets.all(8),
-              child: Row(
+              padding: const EdgeInsets.all(8),
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Icon(

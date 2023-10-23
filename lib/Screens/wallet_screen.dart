@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:parkeaseapp/Constants/clickable_container.dart';
-import 'package:parkeaseapp/Screens/home_page_2.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
 import 'package:parkeaseapp/Screens/menu_widget.dart';
 import 'package:parkeaseapp/Screens/navigation.dart';
+import 'package:parkeaseapp/Screens/new_home_ui.dart';
 import 'package:parkeaseapp/Screens/profile.dart';
 import 'package:parkeaseapp/main.dart';
 class WalletScreen extends StatefulWidget {

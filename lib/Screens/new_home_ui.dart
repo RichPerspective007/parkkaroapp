@@ -9,13 +9,13 @@ import 'package:parkeaseapp/Screens/search_page.dart';
 import 'package:parkeaseapp/Screens/wallet_screen.dart';
 import 'package:parkeaseapp/main.dart';
 
-class OldHomePage extends StatefulWidget {
+class MyHomePage extends StatefulWidget {
    
   @override
-  State<OldHomePage> createState() => _OldHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _OldHomePageState extends State<OldHomePage> {
+class _MyHomePageState extends State<MyHomePage> {
   int currentPageIndex = 0; // Initialize with the default selected index
 
   void _onItemTapped(int index) {
@@ -53,34 +53,19 @@ class _OldHomePageState extends State<OldHomePage> {
     List<String> stringList = []; //list of bookings
     return SafeArea(
       child: Scaffold(
+        backgroundColor: context.isDarkMode ? const Color(0xFF353535):Colors.white,
         extendBodyBehindAppBar: true,
         key: _scaffoldKey,
         drawer: NavDrawer(),
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(120), // Specify the desired height
-          child: Container(
-            margin: EdgeInsets.all(8), // Add margins
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20), // Add border radius
-              color: Color(0xFFFFA41B),
-            ),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.menu,color:Colors.white,),
-                      iconSize: 40,
-                      onPressed: () {
-                        _scaffoldKey.currentState?.openDrawer();// Add your menu button functionality here
-                      },
-                    ),
-                    const Text(
-                      'Home',
-                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
-                    ),
-                    IconButton(
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: CustomScrollView(
+            slivers: [
+              SliverAppBar(
+                backgroundColor: Color(0xFFFFA41B),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                actions: [
+                  IconButton(
                       icon: const Icon(Icons.account_circle_outlined,color: Colors.white,),
                       iconSize: 40,
                       onPressed: () {
@@ -89,11 +74,23 @@ class _OldHomePageState extends State<OldHomePage> {
                         MaterialPageRoute(builder: (context) => ProfileScreen()),
                       );// Add your search button functionality here
                       },
-                    ),]),
-                const Padding(
-                  padding: EdgeInsets.only(left: 16),
+                    )
+                ],
+                leading: IconButton(
+                      icon: const Icon(Icons.menu,color:Colors.white,),
+                      iconSize: 40,
+                      onPressed: () {
+                        _scaffoldKey.currentState?.openDrawer();// Add your menu button functionality here
+                      },
+                    ),
+                title: const Text('New Home',
+                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),),
+                centerTitle: true,
+                bottom: const PreferredSize(
+                  preferredSize: Size(60, 40), 
                   child: Row(
                     children: [
+                      SizedBox(width: 10,),
                       Text(
                         'Hello, ',
                         style: TextStyle(fontSize: 25, color: Colors.white),
@@ -102,23 +99,11 @@ class _OldHomePageState extends State<OldHomePage> {
                         username, // Replace with the user's first name
                         style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
                       ),
-                    ],
-                  ),
-                ),],
-              
-            ),
-          ),
-          ),
-        
-        body: SingleChildScrollView(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            color: context.isDarkMode ? Color(0xFF353535):Colors.white ,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                SizedBox(height: 130), // Adjust spacing as needed
-                Container(
+                    ])),
+              ),
+              SliverToBoxAdapter(
+                child: Container(
+                  margin: EdgeInsets.only(top: 10.0),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: context.isDarkMode ? Color.fromARGB(198, 237, 138, 25): Colors.black, width: 1), // Add border decoration
@@ -147,91 +132,21 @@ class _OldHomePageState extends State<OldHomePage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20), // Add spacing between search bar and categories
-                // Add spacing between categories and content
-                // Content for the selected category
-                // Example:
-                if (bookings)
-                  _buildCategoryContent('Bookings',[_bookedContentItem('BookingID1', 'assets/images/park.png'),
-                  _bookedContentItem('BookingID2', 'assets/images/park.png'),]),
-                
-                Text(
-                  'Nearby Parkings',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: context.isDarkMode?Colors.white:Colors.black),
-                ),
-                
-                _buildCategoryContent('Nearby Parkings', [
-                  // List of content items for Recent Places category
-                  // Example:
-                  _buildContentItem('Parking 1', 'Description 1', 'assets/images/park.png'),
-                  _buildContentItem('Parking 2', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 3', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 4', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 5', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 6', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 7', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 8', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 9', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 10', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 11', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 12', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 13', 'Description 2', 'assets/images/park.png'),
-                  // ...
-                ],),
-                SizedBox(height: 20), // Add spacing between search bar and categories
-                // Add spacing between categories and content
-                // Content for the selected category
-                // Example:
-                _buildCategoryContent('Recent Used Parkings', [
-                  // List of content items for Recent Places category
-                  // Example:
-                  _buildContentItem('Parking 1', 'Description 1', 'assets/images/park.png'),
-                  _buildContentItem('Parking 2', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 3', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 4', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 5', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 6', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 7', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 8', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 9', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 10', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 11', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 12', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 13', 'Description 2', 'assets/images/park.png'),
-                  // ...
-                ],),
-                SizedBox(height: 20), // Add spacing between search bar and categories
-                // Add spacing between categories and content
-                // Content for the selected category
-                // Example:
-                _buildCategoryContent('Favourites', [
-                  // List of content items for Recent Places category
-                  // Example:
-                  _buildContentItem('Parking 1', 'Description 1', 'assets/images/park.png'),
-                  _buildContentItem('Parking 2', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 3', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 4', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 5', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 6', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 7', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 8', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 9', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 10', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 11', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 12', 'Description 2', 'assets/images/park.png'),
-                  _buildContentItem('Parking 13', 'Description 2', 'assets/images/park.png'),
-                  // ...
-                ],),
-                SizedBox(height: 20), // Add spacing between search bar and categories
-                // Add spacing between categories and content
-                // Content for the selected category
-                // Example:
-                
-                // Repeat similar content sections for other categories
-              ],
-            ),
+              ),
+              if (bookings)
+                homeItemHeaders(context, 'Bookings'),
+                parkingSpotsBuilder(bookings, 'BookingID1', 'assets/images/park.png'),
+
+              homeItemHeaders(context, 'Nearby Parkings'),
+              parkingSpotsBuilder(false,null,null),
+              homeItemHeaders(context, 'Recently Used Parkings'),
+              parkingSpotsBuilder(false,null,null),
+              homeItemHeaders(context, 'Favourites'),
+              parkingSpotsBuilder(false,null,null),
+            ],
           ),
         ),
+        
         bottomNavigationBar: NavigationBar(
               onDestinationSelected: (int index) {
               setState(() {
@@ -274,6 +189,31 @@ class _OldHomePageState extends State<OldHomePage> {
     ); // Scaffold widget ends here
   }
 
+  Widget parkingSpotsBuilder(bool bookedSlot,String? id,String? imgPath){
+    return SliverToBoxAdapter(
+                child: Container(
+                  height: MediaQuery.of(context).size.height/4,
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    children: [
+                      Expanded(
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: bookedSlot?5:10,
+                        itemBuilder: (context, index) {
+                          if (bookedSlot){
+                            return _bookedContentItem(id, imgPath);
+                          }
+                          return _buildContentItem('Parking $index', 'Description $index', 'assets/images/park.png');
+                        },
+                      ),
+                    ),
+                    
+                    ]
+                  ),
+                ),
+              );
+  }
   Widget _buildContentItem(String title, String description, String imagePath) {
     return GestureDetector(
       onTap: () {
@@ -318,7 +258,7 @@ class _OldHomePageState extends State<OldHomePage> {
       ),
     );
   }
-  Widget _bookedContentItem(String id, String imagePath){
+  Widget _bookedContentItem(String? id, String? imagePath){
     return Column(
       children: [
         Container(
@@ -328,19 +268,19 @@ class _OldHomePageState extends State<OldHomePage> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             image: DecorationImage(
-              image: AssetImage(imagePath),
+              image: AssetImage(imagePath.toString()),
               fit: BoxFit.cover,
             ),
           ),
         ),
         SizedBox(height: 5,),
         Container(
-          margin: const EdgeInsets.fromLTRB(5,0,5,5),
-          padding: const EdgeInsets.all(2),
+          margin: EdgeInsets.fromLTRB(5,0,5,5),
+          padding: EdgeInsets.all(2),
           width: 150,
           height: 50,
           decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(10),),
-          child: const Column(
+          child: Column(
           children: [
             Row(children: [Text('Time:'),Text('')]),
             Row(children: [Text('SlotID:'),Text('')]),
@@ -348,34 +288,27 @@ class _OldHomePageState extends State<OldHomePage> {
         ),)]
     );
   }
-  Widget _buildCategoryContent(String categoryName, List<Widget> contentItems) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Row(
-          children: [
-            if (categoryName == 'Favourites')
-              Icon(Icons.star,color: context.isDarkMode?Colors.white:Colors.black,),
-            Text(
-              categoryName,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: context.isDarkMode?Colors.white:Colors.black),
-            ),
-          ],
-        ),
-        const SizedBox(height: 10),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: contentItems,
-          ),
-        ),
-      ],
-    );
-  }
 }
-
-
-
+  Widget homeItemHeaders(BuildContext context, String categoryName){
+    return SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 10,),
+                    Row(
+                      children: [
+                        if (categoryName=='Favourites')
+                          Icon(Icons.star,color: context.isDarkMode?Colors.white:Colors.black,),
+                        Text(
+                          categoryName,
+                          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold,color: context.isDarkMode?Colors.white:Colors.black),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              );
+  }
 
 Future<void> _checkLocationService(BuildContext context) async {
   if (!await Geolocator.isLocationServiceEnabled()) {

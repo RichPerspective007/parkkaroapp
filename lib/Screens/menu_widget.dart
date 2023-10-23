@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:parkeaseapp/Constants/alert_dialogs.dart';
 import 'package:parkeaseapp/Constants/clickable_container.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
 import 'package:parkeaseapp/Screens/profile.dart';
@@ -85,9 +86,8 @@ class NavDrawer extends StatelessWidget {
             CustomizedClickableContainer.icon(
                       text: 'Logout',
                       customIconData: Icons.logout,
-                      onTap: () async{
-                        await FirebaseAuth.instance.signOut();
-                        Navigator.of(context).pushNamedAndRemoveUntil('/signout', (Route route) => false);
+                      onTap: () {
+                        showDialog(context: context, builder: (context) => logoutDialogs(context));
 // Action for tapping container
                       },
                       customContainerColor: Colors.white,    // Custom container color

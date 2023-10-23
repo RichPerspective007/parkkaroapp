@@ -9,7 +9,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
   // Request location permission on first startup
-  PermissionStatus status = await Permission.location.request();
+  PermissionStatus status = await Permission.location.request(); //use it to have permissions
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const MyApp());
 }
@@ -34,9 +34,9 @@ class MyApp extends StatelessWidget {
       ),
     ),
       ),
-      home: GetStarted(),
+      home: const GetStarted(),
       routes: {
-        '/signout':(context) => UserAuthChoice(),
+        '/signout':(context) => const UserAuthChoice(),
       },
     );
   }

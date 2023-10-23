@@ -223,7 +223,7 @@ packages:
     source: hosted
     version: "2.0.2"
   flutter_map:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_map
       sha256: "5286f72f87deb132daa1489442d6cc46e986fc105cb727d9ae1b602b35b1d1f3"
@@ -231,7 +231,7 @@ packages:
     source: hosted
     version: "5.0.0"
   flutter_map_location_marker:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_map_location_marker
       sha256: "84464cf16ddaf089dd35a2b2a5c4be3571799d6307f4a54a7d645ab958ff3132"
@@ -433,7 +433,7 @@ packages:
     source: hosted
     version: "4.8.1"
   latlong2:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: latlong2
       sha256: "18712164760cee655bc790122b0fd8f3d5b3c36da2cb7bf94b68a197fbb0811b"
@@ -465,7 +465,7 @@ packages:
     source: hosted
     version: "3.1.1"
   location:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: location
       sha256: "06be54f682c9073cbfec3899eb9bc8ed90faa0e17735c9d9fa7fe426f5be1dd1"

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
-import 'package:parkeaseapp/Screens/home_page_2.dart';
+import 'package:parkeaseapp/Screens/new_home_ui.dart';
 import 'package:parkeaseapp/main.dart';
 
 class Verified extends StatelessWidget {

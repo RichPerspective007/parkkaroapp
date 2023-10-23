@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:parkeaseapp/Constants/alert_dialogs.dart';
 import 'package:parkeaseapp/Constants/clickable_container.dart';
 import 'package:parkeaseapp/Constants/constants.dart';
 import 'package:parkeaseapp/Screens/menu_widget.dart';
@@ -210,9 +211,8 @@ class _SettingsState extends State<Settings> {
                 CustomizedClickableContainer.icon(
                   text: 'Log Out',
                   customIconData: Icons.logout,
-                  onTap: () async{
-                      await FirebaseAuth.instance.signOut();
-                      Navigator.of(context).pushNamedAndRemoveUntil('/signout', (Route route) => false);// Action for tapping container
+                  onTap: () {
+                    showDialog(context: context, builder: (context) => logoutDialogs(context));// Action for tapping container
                   },
                   customContainerColor: Colors.white24,    // Custom container color
                   customContainerHeight: scrHeight/(800/60),        // Custom container height
