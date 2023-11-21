@@ -1,24 +1,6 @@
+# PARK KARO PROJECT by CODEVENGERS.
 
-
-# Park.Karo-An innovation to solve the parking problem in India©
-
-[![Generic badge](https://img.shields.io/badge/License-MIT-green.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/Completed-NO-red.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/Active_Contributor-04-Green.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/Track-Android-Green.svg)](https://shields.io/)
-[![Generic badge](https://img.shields.io/badge/Theme-Open_Inovation-yellow.svg)](https://shields.io/)
-
-## Table of Contents
-
-- [Problem of Car Parking in India](#problem-of-car-parking-in-india)
-- [Description of the Solution](#description-of-the-solution)
-- [How does it work](#how-does-it-work)
-- [How will it work for User and Admins](#how-will-it-work-for-user-and-admins)
-- [Demonstration](#demonstration)
-- [Technologies](#technologies)
-- [Contribution](#contribution)
-- [License](#license)
-- [Conclusion](#conclusion)
+![logo](./logo.png)
 
 ## Problem of Car Parking in India🚕
 
@@ -48,10 +30,6 @@ The parking problem in India is a complex and widespread issue that affects urba
 
     To address the parking problem in India, a multi-faceted approach is necessary. This could include city planning that prioritizes parking infrastructure, implementing stricter parking regulations and enforcement, promoting the use of public transportation, adopting technology-based parking solutions, encouraging carpooling and shared mobility options, and raising awareness about responsible parking behavior among citizens.
 
-## Description of the Solution🎯
-
-## How does it work🎬
-
 ## Key Features🧾
 
 1. **Real-Time Parking Availability:** Provide users with real-time information about available parking spaces in different areas, helping them find parking spots more easily and reducing the time spent searching for a spot.
@@ -80,10 +58,6 @@ The parking problem in India is a complex and widespread issue that affects urba
 
 13. **Support and Help:** Provide a help center or customer support feature to assist users with any issues they might encounter.
 
-## How will it work for User and Admins🎓
-
-## Demonstration⌛
-
 ## Technologies💻
 
 1. **Flutter:**
@@ -103,9 +77,9 @@ These technologies, when used together, form a powerful stack for developing mod
 ## Contribution👷‍♂️
 
 **Concept:** [Promit Chaudhuri](https://github.com/ProSkywalker16) and [Subhadip Santra](https://github.com/Subhadip05Santra) <br/>
-**Design & UI/UX:** [Promit Chaudhuri]and [Sneha Chakraborty](https://github.com/SnehaChakraborty-007) <br/>
-**Frontend:** [Shivaditya Bhattacharya](https://github.com/RichPerspective007) <br/>
-**Backend:** [Promit Chaudhuri](https://github.com/ProSkywalker16), [Soham Banerjee](https://github.com/sohambanerjee10) and [Sneha Chakraborty](https://github.com/SnehaChakraborty-007) <br/>
+**Design & UI/UX:** [Debarshee Chakraborty](https://github.com/debarshee2004), [Promit Chaudhuri](https://github.com/ProSkywalker16) and [Sneha Chakraborty](https://github.com/SnehaChakraborty-007) <br/>
+**Frontend:** [Shivaditya Bhattacharya](https://github.com/RichPerspective007) and [Promit Chaudhuri](https://github.com/ProSkywalker16) <br/>
+**Backend:** [Debarshee Chakraborty](https://github.com/debarshee2004), [Promit Chaudhuri](https://github.com/ProSkywalker16), [Soham Banerjee](https://github.com/sohambanerjee10) and [Sneha Chakraborty](https://github.com/SnehaChakraborty-007) <br/>
 **API:** [Subhadip Santra](https://github.com/Subhadip05Santra) and [Soham Bannerjee](https://github.com/sohambanerjee10) <br/>
 **Artificial Intelligence and Machine Learning:**[Debarshee Chakraborty](https://github.com/debarshee2004)<br/>
 **Documentation:** [Debarshee Chakraborty](https://github.com/debarshee2004) and [Promit Chaudhuri](https://github.com/ProSkywalker16)
@@ -114,7 +88,7 @@ These technologies, when used together, form a powerful stack for developing mod
 
 The Park.Karo application is distributed under the [MIT License](LICENSE), which means you're free to use, modify, and distribute the code as per the terms of the license.
 
-For detailed usage instructions and guides, please refer to the [User Guide](user_guide.md) and [Admin Guide](admin_guide.md) provided in the repository.
+For detailed usage instructions and guides, please refer to the [User Guide](./docs/UserGuide.md) and [Admin Guide](./docs/AdminGuide.md) provided in the repository.
 
 ## Conclusion👋
 
